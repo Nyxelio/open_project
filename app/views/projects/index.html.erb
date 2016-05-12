@@ -41,3 +41,13 @@
 <br>
 
 <%= link_to 'New Project', new_project_path %>
+
+<div class="row">
+  <% @projects.each do |project| %>
+      <div class="columns small-4 large-3 project-container">
+        <div class="callout">
+          <h5><%= link_to project.name, project_path(project)%></h5>
+        </div>
+      </div>
+  <% end %>
+</div>
