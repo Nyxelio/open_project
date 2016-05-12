@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512075715) do
+ActiveRecord::Schema.define(version: 20160512093839) do
 
   create_table "activities", force: :cascade do |t|
     t.decimal  "num_hours"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20160512075715) do
 
   add_index "activities", ["task_id"], name: "index_activities_on_task_id"
   add_index "activities", ["worker_id"], name: "index_activities_on_worker_id"
+
+  create_table "families", force: :cascade do |t|
+    t.string   "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -61,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160512075715) do
     t.integer  "project_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "family_id"
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
