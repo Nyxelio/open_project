@@ -14,7 +14,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="activities">
     <% @activities.each do |activity| %>
       <tr>
         <td><%= activity.num_hours %></td>
@@ -22,9 +22,9 @@
         <td><%= activity.task %></td>
         <td><%= activity.observation %></td>
         <td><%= activity.date_activity %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project_activity_path(@project, activity) %></td>
+        <td><%= link_to 'Edit', edit_project_activity_path(@project, activity) %></td>
+        <td><%= link_to 'Destroy', project_activity_path(@project, activity) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,3 +35,5 @@
 <%= link_to 'New Activity', new_project_activity_path %>
 
 
+
+<%= render 'form' %>

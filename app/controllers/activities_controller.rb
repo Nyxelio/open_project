@@ -1,10 +1,11 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: [:show, :edit, :update, :destroy, :create, :index, :new]
 
   # GET /activities
   # GET /activities.json
   def index
     @activities = Activity.all
+    @activity = Activity.new
   end
 
   # GET /activities/1
@@ -28,9 +29,11 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
+        format.js { render partial: 'activity' }
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
+        format.js { render partial: 'activity', notice: @activity.errors }
         format.html { render :new }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
@@ -64,7 +67,9 @@ class ActivitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
-      @activity = Activity.find(params[:id])
+      @activity = Activity.find(params[:id]) if params[:id]
+      @project = Project.find(params[:project_id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
