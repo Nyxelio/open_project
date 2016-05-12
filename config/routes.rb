@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :families
-  resources :activities
   resources :settings
   resources :workers
   resources :tasks
   resources :projects do
-    resources :tasks
+    resources :activities
+    resources :tasks do
+      resources :activities
+    end
   end
 
   root 'projects#index'
