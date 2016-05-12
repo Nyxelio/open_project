@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Num hours:</strong>
+  <%= @activity.num_hours %>
+</p>
+
+<p>
+  <strong>Worker:</strong>
+  <%= @activity.worker %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @activity.task %>
+</p>
+
+<p>
+  <strong>Observation:</strong>
+  <%= @activity.observation %>
+</p>
+
+<p>
+  <strong>Date activity:</strong>
+  <%= @activity.date_activity %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

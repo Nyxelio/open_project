@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @task.code %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @task.label %>
+</p>
+
+<p>
+  <strong>Estimated start at:</strong>
+  <%= @task.estimated_start_at %>
+</p>
+
+<p>
+  <strong>Estimated end at:</strong>
+  <%= @task.estimated_end_at %>
+</p>
+
+<p>
+  <strong>Estimated duration:</strong>
+  <%= @task.estimated_duration %>
+</p>
+
+<p>
+  <strong>Real start at:</strong>
+  <%= @task.real_start_at %>
+</p>
+
+<p>
+  <strong>Real end at:</strong>
+  <%= @task.real_end_at %>
+</p>
+
+<p>
+  <strong>Real duration:</strong>
+  <%= @task.real_duration %>
+</p>
+
+<p>
+  <strong>Percent progress:</strong>
+  <%= @task.percent_progress %>
+</p>
+
+<p>
+  <strong>Ratio:</strong>
+  <%= @task.ratio %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

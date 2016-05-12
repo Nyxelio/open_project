@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Label</th>
+      <th>Estimated start at</th>
+      <th>Estimated end at</th>
+      <th>Estimated duration</th>
+      <th>Real start at</th>
+      <th>Real end at</th>
+      <th>Real duration</th>
+      <th>Percent progress</th>
+      <th>Ratio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.code %></td>
+        <td><%= task.label %></td>
+        <td><%= task.estimated_start_at %></td>
+        <td><%= task.estimated_end_at %></td>
+        <td><%= task.estimated_duration %></td>
+        <td><%= task.real_start_at %></td>
+        <td><%= task.real_end_at %></td>
+        <td><%= task.real_duration %></td>
+        <td><%= task.percent_progress %></td>
+        <td><%= task.ratio %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>
