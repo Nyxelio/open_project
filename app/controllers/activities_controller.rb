@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    @activities = Activity.joins(:task).where(tasks: {project_id: @project})
     @activity = Activity.new
   end
 

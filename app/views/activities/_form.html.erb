@@ -1,20 +1,8 @@
-<%= simple_form_for([@project, @activity], url: project_activities_path, remote: :true, class: 'activity_form') do |f| %>
-  <% if @activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
-
-      <ul>
-      <% @activity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <%= f.input :num_hours, label_html: { class: 'text-right middle' } %><br>
-    <%= f.association :worker, label_method: :name %><br>
-    <%= f.association :task, label_method: :label %><br>
-    <%= f.input :observation %><br>
-    <%= f.input :date_activity, as: :string, input_html: { type: 'datetime' } %><br>
-    <%= f.button :submit %>
-<% end %>
+<tr>
+  <td><%= f.input_field :date_activity, as: :string, input_html: { type: 'datetime' } %></td>
+  <td><%= f.input_field :worker_id, as: :select, label_method: :name, collection: Worker.all %></td>
+  <td><%= f.input_field :num_hours, label_html: { class: 'text-right middle' } %></td>
+  <td><%= f.input_field :task_id, as: :select, label_method: :label, collection: Task.where(project: @project) %></td>
+  <td><%= f.input_field :observation %></td>
+  <td><%= f.button :submit %></td>
+</tr>

@@ -1,10 +1,10 @@
 <tr>
-  <td><%= @activity.num_hours %></td>
-  <td><%= @activity.worker %></td>
-  <td><%= @activity.task %></td>
-  <td><%= @activity.observation %></td>
-  <td><%= @activity.date_activity %></td>
-  <td><%= link_to 'Show', project_activity_path(@project, @activity) %></td>
-  <td><%= link_to 'Edit', edit_project_activity_path(@project, @activity) %></td>
-  <td><%= link_to 'Destroy', project_activity_path(@project, @activity), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= activity.date_activity %></td>
+  <td><%= activity.worker.name unless activity.worker.nil? %></td>
+  <td><%= activity.num_hours %></td>
+  <td><%= activity.task.label unless activity.task.nil? %></td>
+  <td><%= activity.observation %></td>
+  <td><%= link_to 'Show', project_activity_path(@project, activity) %></td>
+  <td><%= link_to 'Edit', edit_project_activity_path(@project, activity) %></td>
+  <td><%= link_to 'Destroy', project_activity_path(@project, activity), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
