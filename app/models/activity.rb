@@ -10,6 +10,30 @@ class Activity < ActiveRecord::Base
     task.exceeded?
   end
 
+  after_create :add_duration
+  before_destroy :remove_duration
+  around_update :update_duration
+
+  def add_duration(duration = nil)
+    real_duration = task.real_duration + (duration || num_hours)
+    ratio = real_duration / task.estimated_duration
+    task.update!(real_duration: real_duration, ratio: ratio)
+  end
+
+  def update_duration
+    remove_duration changes['num_hours'][0]
+
+    yield
+
+    add_duration changes['num_hours'][1]
+  end
+
+  def remove_duration(duration = nil)
+    real_duration = task.real_duration - (duration || num_hours)
+    ratio = real_duration / task.estimated_duration
+    task.update!(real_duration: real_duration, ratio: ratio)
+  end
+
   class << self
     def find_exceeded_workers(date, worker_name, options = {})
       activities = joins(:worker).where(date_activity: date, workers: {name: worker_name })

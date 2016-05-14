@@ -15,16 +15,17 @@ j = Worker.create(name: 'Julien TISSERANT', cost_hour: '35')
 
 Project.create(name: 'Projet fictif', is_close: true, estimated_start_at: '2016-01-03', estimated_end_at: '2016-01-30', estimated_duration: 70, real_start_at: '2016-01-04', real_end_at: '2016-02-07', real_duration: 100, difference_hour: 30)
 
-p1 = Project.create(name: 'Appli gestion', is_close: false, estimated_start_at: '2016-05-11', estimated_end_at: '2016-05-20', estimated_duration: 36, real_start_at: '2016-05-11', real_end_at: '', real_duration: 0, difference_hour: 0)
+# 6 days x 6 hours x 4 guys
+p1 = Project.create(name: 'Appli gestion', is_close: false, estimated_start_at: '2016-05-11', estimated_end_at: '2016-05-20', estimated_duration: 144, real_start_at: '2016-05-11', real_end_at: '', real_duration: 0, difference_hour: 0)
 
-Family.create(label: 'Conception')
-Family.create(label: 'Réalisation')
-Family.create(label: 'Webdesign')
-Family.create(label: 'Stabilisation')
+f1 = Family.create(label: 'Conception')
+f2 = Family.create(label: 'Réalisation')
+f3 = Family.create(label: 'Webdesign')
+f4 = Family.create(label: 'Stabilisation')
 
-t1 = Task.create(code: 'TEK', label: 'Choix des techno', estimated_start_at: '2016-05-11', estimated_end_at: '2016-05-11', estimated_duration: 4, real_start_at: '2016-05-11', real_end_at: '2016-05-11', real_duration: 2.25, percent_progress: 100, ratio: 2.25/4, project: p1 )
-t2 = Task.create(code: 'ARC', label: 'Architecture', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-12', estimated_duration: 3, real_start_at: '2016-05-12', real_end_at: '2016-05-12', real_duration: 3, percent_progress: 100, ratio: 1, project: p1 )
-t3 = Task.create(code: 'DEV', label: 'Développement', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-20', estimated_duration: 18, real_start_at: '2016-05-12', real_end_at: '', real_duration: 0, percent_progress: 20, ratio: 0, project: p1 )
+t1 = Task.create(code: 'TEK', label: 'Choix des techno', estimated_start_at: '2016-05-11', estimated_end_at: '2016-05-11', estimated_duration: 16, real_start_at: '2016-05-11', real_end_at: '2016-05-11', real_duration: 0, percent_progress: 100, ratio: 0, project: p1, family: f1 )
+t2 = Task.create(code: 'ARC', label: 'Architecture', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-12', estimated_duration: 6, real_start_at: '2016-05-12', real_end_at: '2016-05-12', real_duration: 0, percent_progress: 100, ratio: 0, project: p1, family: f1 )
+t3 = Task.create(code: 'DEV', label: 'Développement', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-20', estimated_duration: 122, real_start_at: '2016-05-12', real_end_at: '', real_duration: 0, percent_progress: 20, ratio: 0, project: p1, family: f2 )
 
 Activity.create(date_activity: '2016-05-11', num_hours: 2.25, worker: n, task: t1)
 Activity.create(date_activity: '2016-05-11', num_hours: 2.25, worker: cr, task: t1)

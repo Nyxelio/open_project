@@ -30,9 +30,8 @@
         <td><%= task.real_start_at %></td>
         <td><%= task.real_end_at %></td>
         <td><%= task.real_duration %></td>
-        <!--<td>< task.percent_progress %></td>-->
         <td><%= progress task.percent_progress %></td>
-        <td><%= task.ratio %></td>
+        <td><%= task.ratio.round(2) %></td>
         <td><%= link_to 'Show', project_task_path(@project, task) %></td>
         <td><%= link_to 'Edit', edit_project_task_path(@project, task) %></td>
         <td><%= link_to 'Destroy', project_task_path(@project, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>

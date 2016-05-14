@@ -12,6 +12,7 @@ class CreateTasks < ActiveRecord::Migration
       t.decimal :percent_progress
       t.decimal :ratio
       t.references :project, index: true, foreign_key: true
+      t.references :family, index: true, foreign_key: true
 
       t.timestamps null: false
     end
