@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :families
-  resources :settings
-  match 'settings/all/edit' => 'settings#edit_all', :as => :edit_all, :via => :get
-  match 'settings/all' => 'settings#update_all', :as => :update_all, :via => :put
+  resources :settings do
+    collection do
+      put :update_all
+    end
+  end
   resources :workers
   resources :tasks
   resources :projects do

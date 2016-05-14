@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :set_setting, only: [:show, :edit, :update, :destroy, :update_all]
+  before_action :set_setting, only: [:show, :edit, :update, :destroy]
 
   # GET /settings
   # GET /settings.json
@@ -19,11 +19,6 @@ class SettingsController < ApplicationController
 
   # GET /settings/1/edit
   def edit
-  end
-
-  def edit_all
-    print "edit all"
-    @settings = Setting.all
   end
 
   # POST /settings
@@ -58,7 +53,8 @@ class SettingsController < ApplicationController
 
   # PATCH/PUT /settings/all
   def update_all
-    print "update all"
+    Setting.update(params['setting'].keys, params['setting'].values)
+    redirect_to settings_path
   end
 
   # DELETE /settings/1
