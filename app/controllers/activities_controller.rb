@@ -14,9 +14,8 @@ class ActivitiesController < ApplicationController
     res = []
     if options[:date_activity] and options[:input]
       if options[:worker_name]
-        q = Activity.joins(:worker).where(date_activity: Date.parse(options[:date_activity]), workers:{name: options[:worker_name] })
-
-        if q.sum(:num_hours).to_d + options[:input].to_d > Setting.where(label: 'hours_per_day').first.value.to_d
+        q = Activity.find_exceeded_workers(Date.parse(options[:date_activity]), options[:worker_name], offset: options[:input])
+        if q.length > 0
           res = q.collect(&:id)
         end
       end

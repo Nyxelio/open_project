@@ -4,5 +4,5 @@
 
 @import "settings";
 tr.alert{
-  background-color: $alert-color;
+  background-color: $alert-color !important;
 }

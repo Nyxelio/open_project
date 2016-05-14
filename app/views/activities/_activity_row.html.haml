@@ -1,6 +1,9 @@
-%tr{data: {id: activity.id}}
+%tr{data: {id: activity.id}, class: activity.has_exceeded_worker? ? 'alert': '' }
   %td= activity.date_activity.strftime('%d/%m/%Y') unless activity.date_activity.nil?
-  %td= activity.worker.name unless activity.worker.nil?
+  %td
+    - if activity.has_exceeded_worker?
+      %i.fi-alert
+    = activity.worker.name unless activity.worker.nil?
   %td= activity.num_hours
   %td= link_to activity.task.label, project_task_path(@project, activity.task) unless activity.task.nil?
   %td= activity.observation
