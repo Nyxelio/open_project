@@ -1,4 +1,4 @@
-%tr
+%tr{data: {search: search_project_activities_url(@project)}}
   %td= f.input_field :date_activity, as: :string
   %td= f.input_field :worker_id, as: :select, label_method: :name, collection: Worker.all
   %td= f.input_field :num_hours, label_html: { class: 'text-right middle' }

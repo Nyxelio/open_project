@@ -1,11 +1,27 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy, :create, :index, :new]
+  respond_to :json, only: [:search]
 
   # GET /activities
   # GET /activities.json
   def index
     @activities = Activity.joins(:task).where(tasks: {project_id: @project})
     @activity = Activity.new
+  end
+
+  def search(*args)
+    options = params || args.extract_options!
+    res = []
+    if options[:date_activity] and options[:input]
+      if options[:worker_name]
+        q = Activity.joins(:worker).where(date_activity: Date.parse(options[:date_activity]), workers:{name: options[:worker_name] })
+
+        if q.sum(:num_hours).to_d + options[:input].to_d > Setting.where(label: 'hours_per_day').first.value.to_d
+          res = q.collect(&:id)
+        end
+      end
+    end
+    respond_with res
   end
 
   # GET /activities/1

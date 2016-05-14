@@ -73,8 +73,7 @@ ActiveRecord::Schema.define(version: 20160512093839) do
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
 
   create_table "workers", force: :cascade do |t|
-    t.string   "firstname"
-    t.string   "lastname"
+    t.string   "name"
     t.decimal  "cost_hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

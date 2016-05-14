@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Setting.create(label: 'hours_per_day', value: '7')
-n = Worker.create(firstname: 'Nicolas', lastname: 'PROCUREUR', cost_hour: '45')
-cr = Worker.create(firstname: 'Clément', lastname: 'ROUSSY', cost_hour: '45')
-cg = Worker.create(firstname: 'Clément', lastname: 'GODART', cost_hour: '40')
-j = Worker.create(firstname: 'Julien', lastname: 'TISSERANT', cost_hour: '35')
+n = Worker.create(name: 'Nicolas PROCUREUR', cost_hour: '45')
+cr = Worker.create(name: 'Clément ROUSSY', cost_hour: '45')
+cg = Worker.create(name: 'Clément GODART', cost_hour: '40')
+j = Worker.create(name: 'Julien TISSERANT', cost_hour: '35')
 
 
 Project.create(name: 'Projet fictif', is_close: true, estimated_start_at: '2016-01-03', estimated_end_at: '2016-01-30', estimated_duration: 70, real_start_at: '2016-01-04', real_end_at: '2016-02-07', real_duration: 100, difference_hour: 30)
