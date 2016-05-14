@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160512093839) do
     t.integer  "worker_id"
     t.integer  "task_id"
     t.text     "observation"
-    t.datetime "date_activity"
+    t.date     "date_activity"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 20160512093839) do
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.boolean  "is_close"
-    t.datetime "estimated_start_at"
-    t.datetime "estimated_end_at"
+    t.date     "estimated_start_at"
+    t.date     "estimated_end_at"
     t.decimal  "estimated_duration"
-    t.datetime "real_start_at"
-    t.datetime "real_end_at"
+    t.date     "real_start_at"
+    t.date     "real_end_at"
     t.decimal  "real_duration"
     t.decimal  "difference_hour"
     t.datetime "created_at",         null: false
@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 20160512093839) do
   create_table "tasks", force: :cascade do |t|
     t.string   "code"
     t.string   "label"
-    t.datetime "estimated_start_at"
-    t.datetime "estimated_end_at"
+    t.date     "estimated_start_at"
+    t.date     "estimated_end_at"
     t.decimal  "estimated_duration"
-    t.datetime "real_start_at"
-    t.datetime "real_end_at"
+    t.date     "real_start_at"
+    t.date     "real_end_at"
     t.decimal  "real_duration"
     t.decimal  "percent_progress"
     t.decimal  "ratio"

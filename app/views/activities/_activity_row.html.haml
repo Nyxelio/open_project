@@ -1,5 +1,5 @@
-%tr{data: {date_activity: activity.date_activity, worker_name: activity.worker.name, num_hours: activity.num_hours}}
-  %td= activity.date_activity.strftime('%d/%m/%Y %H:%M:%S') unless activity.date_activity.nil?
+%tr{data: {id: activity.id}}
+  %td= activity.date_activity.strftime('%d/%m/%Y') unless activity.date_activity.nil?
   %td= activity.worker.name unless activity.worker.nil?
   %td= activity.num_hours
   %td= link_to activity.task.label, project_task_path(@project, activity.task) unless activity.task.nil?
