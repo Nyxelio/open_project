@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Activities</h1>
+<h1>Récapitulatif des activités</h1>
 
 <%= simple_form_for([@project, @activity], url: project_activities_path, remote: :true, class: 'activity_form') do |f| %>
     <% if @activity.errors.any? %>
@@ -17,10 +17,10 @@
 <table>
   <thead>
     <tr>
-      <th>Date activity</th>
-      <th>Worker</th>
-      <th>Num hours</th>
-      <th>Task</th>
+      <th>Date</th>
+      <th>Collaborateur</th>
+      <th>Heures</th>
+      <th>Tâche</th>
       <th>Observation</th>
       <th colspan="3"></th>
     </tr>
@@ -38,7 +38,7 @@
 
 <br>
 
-<%= link_to 'New Activity', new_project_activity_path, class:'addActivity' %>
+<%= link_to 'Nouvelle activité', new_project_activity_path, class:'addActivity' %>
 
 <% end %>
 

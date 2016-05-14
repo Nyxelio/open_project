@@ -15,3 +15,12 @@
  *= require foundation_and_overrides
 
  */
+
+
+#core {
+  margin: 0 30px;
+}
+
+.top-bar-left ul > li:hover {
+  background-color: white;
+}

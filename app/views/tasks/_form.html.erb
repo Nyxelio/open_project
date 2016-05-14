@@ -1,4 +1,4 @@
-<%= form_for([@project, @task]) do |f| %>
+<%= simple_form_for [@project, @task] do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -11,48 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :label %><br>
-    <%= f.text_field :label %>
-  </div>
-  <div class="field">
-    <%= f.label :estimated_start_at %><br>
-    <%= f.datetime_select :estimated_start_at %>
-  </div>
-  <div class="field">
-    <%= f.label :estimated_end_at %><br>
-    <%= f.datetime_select :estimated_end_at %>
-  </div>
-  <div class="field">
-    <%= f.label :estimated_duration %><br>
-    <%= f.text_field :estimated_duration %>
-  </div>
-  <div class="field">
-    <%= f.label :real_start_at %><br>
-    <%= f.datetime_select :real_start_at %>
-  </div>
-  <div class="field">
-    <%= f.label :real_end_at %><br>
-    <%= f.datetime_select :real_end_at %>
-  </div>
-  <div class="field">
-    <%= f.label :real_duration %><br>
-    <%= f.text_field :real_duration %>
-  </div>
-  <div class="field">
-    <%= f.label :percent_progress %><br>
-    <%= f.text_field :percent_progress %>
-  </div>
-  <div class="field">
-    <%= f.label :ratio %><br>
-    <%= f.text_field :ratio %>
-  </div>
-  <!--<= f.hidden_field @task, @project.id %>-->
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.input :code %>
+  <%= f.input :label %>
+  <%= f.input :family_id, as: :select, label_method: :label, collection: Family.all %>
+  <%= f.input :estimated_start_at, as: :string %>
+  <%= f.input :estimated_end_at, as: :string %>
+  <%= f.input :estimated_duration %>
+  <%= f.input :real_start_at, as: :string %>
+  <%= f.input :real_end_at, as: :string %>
+  <%= f.input :real_duration %>
+  <%= f.input :percent_progress %>
+  <%= f.input :ratio %>
+  <%= f.button :submit %>
 <% end %>

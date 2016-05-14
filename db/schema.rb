@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160512093839) do
     t.datetime "real_start_at"
     t.datetime "real_end_at"
     t.decimal  "real_duration"
-    t.datetime "difference_hour"
+    t.decimal  "difference_hour"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

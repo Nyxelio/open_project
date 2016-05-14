@@ -9,7 +9,7 @@ class CreateProjects < ActiveRecord::Migration
       t.datetime :real_start_at
       t.datetime :real_end_at
       t.decimal :real_duration
-      t.datetime :difference_hour
+      t.decimal :difference_hour
 
       t.timestamps null: false
     end
