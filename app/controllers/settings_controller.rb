@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :set_setting, only: [:show, :edit, :update, :destroy]
+  before_action :set_setting, only: [:show, :edit, :update, :destroy, :update_all]
 
   # GET /settings
   # GET /settings.json
@@ -19,6 +19,11 @@ class SettingsController < ApplicationController
 
   # GET /settings/1/edit
   def edit
+  end
+
+  def edit_all
+    print "edit all"
+    @settings = Setting.all
   end
 
   # POST /settings
@@ -49,6 +54,11 @@ class SettingsController < ApplicationController
         format.json { render json: @setting.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # PATCH/PUT /settings/all
+  def update_all
+    print "update all"
   end
 
   # DELETE /settings/1

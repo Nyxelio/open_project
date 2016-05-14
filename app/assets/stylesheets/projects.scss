@@ -15,3 +15,9 @@ $grid-column-gutter: (
         small: 20px,
         medium: 30px,
 );
+
+a.newProject{
+  &:visited, &:hover {
+    color: white;
+  }
+}

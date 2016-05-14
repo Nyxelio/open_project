@@ -14,6 +14,5 @@
   <strong>Cost hour:</strong>
   <%= @worker.cost_hour %>
 </p>
-
-<%= link_to 'Edit', edit_worker_path(@worker) %> |
-<%= link_to 'Back', workers_path %>
+<%= link_to 'Edit', edit_worker_path(@worker), class: "success button" %>
+<%= link_to 'Back', workers_path, class: "alert button" %>

@@ -11,19 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :firstname %><br>
-    <%= f.text_field :firstname %>
+  <div class="row expanded">
+    <div class="small-2 large-4 columns">
+      <div class="field">
+        <%= f.label :firstname %><br>
+        <%= f.text_field :firstname %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :lastname %><br>
-    <%= f.text_field :lastname %>
+  <div class="row expanded">
+    <div class="small-2 large-4 columns">
+      <div class="field">
+        <%= f.label :lastname %><br>
+        <%= f.text_field :lastname %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :cost_hour %><br>
-    <%= f.text_field :cost_hour %>
+  <div class="row expanded">
+    <div class="small-2 large-4 columns">
+      <div class="field">
+        <%= f.label :cost_hour %><br>
+        <%= f.text_field :cost_hour %>
+      </div>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit, class: "button" %>
   </div>
 <% end %>

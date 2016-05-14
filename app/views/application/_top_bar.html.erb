@@ -6,18 +6,20 @@
         <%=link_to "Projets", projects_path %>
       </li>
       <li>
-        <%=link_to "Tâches", project_tasks_path(@project) if @project %>
+        <%=link_to "Tâches", project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
 
       <li>
-        <%=link_to "Activités", project_activities_path(@project) if @project %>
+        <%=link_to "Activités", project_activities_path(@project) unless @project.nil? or @project.new_record? %>
+      </li>
+      <li>
+        <%=link_to "Collaborateurs", workers_path %>
       </li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-      <li><input type="search" placeholder="Search"></li>
-      <li><button type="button" class="button">Search</button></li>
+      <li><%= link_to " Settings", settings_path, class: "fi-wrench" %></li>
     </ul>
   </div>
 </div>

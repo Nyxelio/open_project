@@ -12,20 +12,20 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @workers.each do |worker| %>
-      <tr>
-        <td><%= worker.firstname %></td>
-        <td><%= worker.lastname %></td>
-        <td><%= worker.cost_hour %></td>
-        <td><%= link_to 'Show', worker %></td>
-        <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
-        <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+      <% @workers.each do |worker| %>
+        <tr>
+          <td><%= worker.firstname %></td>
+          <td><%= worker.lastname %></td>
+          <td><%= worker.cost_hour %></td>
+          <td><%= link_to 'Show', worker, class: "show" %></td>
+          <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+          <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Worker', new_worker_path %>
+<%= link_to 'New Worker', new_worker_path, class: "button newWorker" %>
