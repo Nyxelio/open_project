@@ -2,6 +2,20 @@
 
 <h1>Listing Settings</h1>
 
+  <div class="row expanded">
+    <div class="small-2 large-4 columns">
+      <%= form_for :setting, :url => update_all_path, :html => { :method => :put } do %>
+        <% @settings.each do |setting| %>
+          <%= label_tag(setting.label) %>
+          <%= text_field_tag(setting.id, setting.value) %>
+        <% end %>
+        <div class="actions">
+          <%= submit_tag("Submit", class: "button") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<hr>
 <table>
   <thead>
     <tr>
