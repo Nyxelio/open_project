@@ -44,7 +44,6 @@ gem 'pry-rails'
 gem 'pry'
 gem 'pry-byebug'
 
-gem 'jquery-rails'
 
 gem 'foundation-icons-sass-rails'
 
