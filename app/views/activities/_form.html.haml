@@ -1,0 +1,7 @@
+%tr
+  %td= f.input_field :date_activity, as: :string
+  %td= f.input_field :worker_id, as: :select, label_method: :name, collection: Worker.all
+  %td= f.input_field :num_hours, label_html: { class: 'text-right middle' }
+  %td= f.input_field :task_id, as: :select, label_method: :label, collection: Task.where(project: @project)
+  %td= f.input_field :observation, as: :string
+  %td= f.button :submit
