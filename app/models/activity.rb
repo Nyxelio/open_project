@@ -6,6 +6,10 @@ class Activity < ActiveRecord::Base
     self.class.find_exceeded_workers(date_activity, worker.name).length > 0
   end
 
+  def has_exceeded_task?
+    task.exceeded?
+  end
+
   class << self
     def find_exceeded_workers(date, worker_name, options = {})
       activities = joins(:worker).where(date_activity: date, workers: {name: worker_name })

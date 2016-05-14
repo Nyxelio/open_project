@@ -19,6 +19,11 @@ class ActivitiesController < ApplicationController
           res = q.collect(&:id)
         end
       end
+    elsif !options[:date_activity] and options[:input] and options[:task_id]
+      q = Task.find(options[:task_id]).exceeded?(offset: options[:input])
+      if q
+        res = Activity.where(task_id: options[:task_id]).collect(&:id)
+      end
     end
     respond_with res
   end

@@ -1,10 +1,13 @@
-%tr{data: {id: activity.id}, class: activity.has_exceeded_worker? ? 'alert': '' }
+%tr{data: {id: activity.id}, class: activity.has_exceeded_worker? ? 'alert': activity.has_exceeded_task? ? 'warning' : '' }
   %td= activity.date_activity.strftime('%d/%m/%Y') unless activity.date_activity.nil?
   %td
     - if activity.has_exceeded_worker?
       %i.fi-alert
     = activity.worker.name unless activity.worker.nil?
   %td= activity.num_hours
-  %td= link_to activity.task.label, project_task_path(@project, activity.task) unless activity.task.nil?
+  %td
+    - if activity.has_exceeded_task?
+      %i.fi-alert
+    = link_to activity.task.label, project_task_path(@project, activity.task) unless activity.task.nil?
   %td= activity.observation
   %td= [link_to('Voir', project_activity_path(@project, activity)), link_to('Modifier', edit_project_activity_path(@project, activity)), link_to('Supprimer', project_activity_path(@project, activity), method: :delete, data: { confirm: 'Are you sure?' })].join(' | ').html_safe

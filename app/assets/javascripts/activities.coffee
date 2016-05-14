@@ -9,8 +9,8 @@ $ ->
 
   $("[name='activity[num_hours]']").on 'input', () ->
     $(".inline.alert").removeClass "alert"
-    return if isNaN($(@).val()) or $(@).val().length is 0
     hours = $(@).val()
+    return if isNaN(hours) or hours.length is 0
     worker_name = $("[name='activity[worker_id]']").find("option:selected").text()
     return if worker_name.length is 0
     date = $("[name='activity[date_activity]']").val()
@@ -20,3 +20,14 @@ $ ->
     $.getJSON $(@).closest("[data-search]").data('search'), date_activity: date.toISOString(), worker_name: worker_name, input: hours, (data) ->
       data.forEach (d) ->
         $("#activities").find("[data-id='#{d}']").addClass('inline alert')
+
+  $("[name='activity[task_id]']").on 'change', (e) ->
+    $(".inline.warning").removeClass "warning"
+    task_id = $(@).val()
+    return if isNaN(task_id) or task_id.length is 0
+    hours = $("[name='activity[num_hours]']").val()
+    return if isNaN(hours) or hours.length is 0
+
+    $.getJSON $(@).closest("[data-search]").data('search'), task_id: task_id, input: hours, (data) ->
+      data.forEach (d) ->
+        $("#activities").find("[data-id='#{d}']").addClass('inline warning')
