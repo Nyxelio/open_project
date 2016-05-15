@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512093839) do
+ActiveRecord::Schema.define(version: 20160512093817) do
 
   create_table "activities", force: :cascade do |t|
     t.decimal  "num_hours"
     t.integer  "worker_id"
     t.integer  "task_id"
     t.text     "observation"
-    t.datetime "date_activity"
+    t.date     "date_activity"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 20160512093839) do
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.boolean  "is_close"
-    t.datetime "estimated_start_at"
-    t.datetime "estimated_end_at"
+    t.date     "estimated_start_at"
+    t.date     "estimated_end_at"
     t.decimal  "estimated_duration"
-    t.datetime "real_start_at"
-    t.datetime "real_end_at"
+    t.date     "real_start_at"
+    t.date     "real_end_at"
     t.decimal  "real_duration"
     t.decimal  "difference_hour"
     t.datetime "created_at",         null: false
@@ -56,25 +56,25 @@ ActiveRecord::Schema.define(version: 20160512093839) do
   create_table "tasks", force: :cascade do |t|
     t.string   "code"
     t.string   "label"
-    t.datetime "estimated_start_at"
-    t.datetime "estimated_end_at"
+    t.date     "estimated_start_at"
+    t.date     "estimated_end_at"
     t.decimal  "estimated_duration"
-    t.datetime "real_start_at"
-    t.datetime "real_end_at"
+    t.date     "real_start_at"
+    t.date     "real_end_at"
     t.decimal  "real_duration"
     t.decimal  "percent_progress"
     t.decimal  "ratio"
     t.integer  "project_id"
+    t.integer  "family_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "family_id"
   end
 
+  add_index "tasks", ["family_id"], name: "index_tasks_on_family_id"
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
 
   create_table "workers", force: :cascade do |t|
-    t.string   "firstname"
-    t.string   "lastname"
+    t.string   "name"
     t.decimal  "cost_hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

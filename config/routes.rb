@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :workers
   resources :tasks
   resources :projects do
-    resources :activities
+    resources :activities do
+      collection do
+        get :search
+      end
+    end
     resources :tasks do
       resources :activities
     end

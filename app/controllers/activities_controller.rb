@@ -1,11 +1,31 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy, :create, :index, :new]
+  respond_to :json, only: [:search]
 
   # GET /activities
   # GET /activities.json
   def index
     @activities = Activity.joins(:task).where(tasks: {project_id: @project})
     @activity = Activity.new
+  end
+
+  def search(*args)
+    options = params || args.extract_options!
+    res = []
+    if options[:date_activity] and options[:input]
+      if options[:worker_name]
+        q = Activity.find_exceeded_workers(Date.parse(options[:date_activity]), options[:worker_name], offset: options[:input])
+        if q.length > 0
+          res = q.collect(&:id)
+        end
+      end
+    elsif !options[:date_activity] and options[:input] and options[:task_id]
+      q = Task.find(options[:task_id]).exceeded?(offset: options[:input])
+      if q
+        res = Activity.where(task_id: options[:task_id]).collect(&:id)
+      end
+    end
+    respond_with res
   end
 
   # GET /activities/1
@@ -59,7 +79,7 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }
+      format.html { redirect_to project_activities_url(@project), notice: 'Activity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -5,7 +5,7 @@ class CreateActivities < ActiveRecord::Migration
       t.references :worker, index: true, foreign_key: true
       t.references :task, index: true, foreign_key: true
       t.text :observation
-      t.datetime :date_activity
+      t.date :date_activity
 
       t.timestamps null: false
     end
