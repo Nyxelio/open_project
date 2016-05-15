@@ -21,11 +21,14 @@ class Activity < ActiveRecord::Base
   end
 
   def update_duration
-    remove_duration changes['num_hours'][0]
+
+    duration = self.changes.key?('num_hours') ? self.changes['num_hours'][0] : self.num_hours
+    remove_duration(duration)
 
     yield
 
-    add_duration changes['num_hours'][1]
+    duration = self.changes.key?('num_hours') ? self.changes['num_hours'][1] : self.num_hours
+    add_duration(duration)
   end
 
   def remove_duration(duration = nil)

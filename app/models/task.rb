@@ -19,11 +19,14 @@ class Task < ActiveRecord::Base
   end
 
   def update_duration
-    remove_duration(self.changes['real_duration'][0])
+
+    duration = self.changes.key?('real_duration') ? self.changes['real_duration'][0] : self.real_duration
+    remove_duration(duration)
 
     yield
 
-    add_duration(self.changes['real_duration'][1])
+    duration = self.changes.key?('real_duration') ? self.changes['real_duration'][1] : self.real_duration
+    add_duration(duration)
   end
 
   def remove_duration(duration = nil)
