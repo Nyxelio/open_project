@@ -8,6 +8,10 @@ class Task < ActiveRecord::Base
     real_duration + sum > estimated_duration
   end
 
+  def remaining
+    @remaining ||= estimated_duration - real_duration
+  end
+
   after_create :add_duration
   before_destroy :remove_duration
   around_update :update_duration

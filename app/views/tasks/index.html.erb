@@ -15,6 +15,7 @@
       <th>Real duration</th>
       <th>Percent progress</th>
       <th>Ratio</th>
+      <th>Restant</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,6 +33,7 @@
         <td><%= task.real_duration %></td>
         <td><%= progress task.percent_progress %></td>
         <td><%= task.ratio.round(2) %></td>
+        <td><%= task.remaining %></td>
         <td><%= link_to 'Show', project_task_path(@project, task) %></td>
         <td><%= link_to 'Edit', edit_project_task_path(@project, task) %></td>
         <td><%= link_to 'Destroy', project_task_path(@project, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
