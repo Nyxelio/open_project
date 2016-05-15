@@ -1,6 +1,8 @@
-<h1>Editing Family</h1>
+<div class="small-2 large-4 columns">
+  <h1>Editer catégorie</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @family %> |
-<%= link_to 'Back', families_path %>
+  <%= link_to 'Detail', @family, class: 'button' %>
+  <%= link_to 'Retour', families_path, class: 'secondary button' %>
+</div>

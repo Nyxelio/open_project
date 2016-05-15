@@ -6,6 +6,9 @@
         <%=link_to "Projets", projects_path %>
       </li>
       <li>
+        <%=link_to "Catégories", families_path %>
+      </li>
+      <li>
         <%=link_to "Tâches", project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
 
