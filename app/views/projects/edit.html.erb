@@ -1,6 +1,10 @@
-<h1>Editing Project</h1>
+<div class="row expanded">
+  <div class="small-2 large-4 columns">
+    <h1>Editing Project</h1>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+    <%= link_to 'Voir', @project, class: 'button' %>
+    <%= link_to 'Retour', projects_path, class: 'secondary button' %>
+  </div>
+</div>

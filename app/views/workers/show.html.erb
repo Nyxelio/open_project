@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Firstname:</strong>
+  <strong>Prénom:</strong>
   <%= @worker.firstname %>
 </p>
 
 <p>
-  <strong>Lastname:</strong>
+  <strong>Nom:</strong>
   <%= @worker.lastname %>
 </p>
 
 <p>
-  <strong>Cost hour:</strong>
+  <strong>Coût par heure:</strong>
   <%= @worker.cost_hour %>
 </p>
 
-<%= link_to 'Edit', edit_worker_path(@worker), class: 'button' %> |
-<%= link_to 'Back', workers_path, class: 'button secondary' %>
+<%= link_to 'Editer', edit_worker_path(@worker), class: 'button' %>
+<%= link_to 'Retour', workers_path, class: 'button secondary' %>

@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -20,12 +19,12 @@
     <%= f.check_box :is_close %>
   </div>
   <div class="field">
-    <%= f.label :estimated_start_at %><br>
-    <%= f.datetime_select :estimated_start_at %>
+      <%= f.label :estimated_start_at %><br>
+      <%= f.date_select :estimated_start_at %>
   </div>
   <div class="field">
     <%= f.label :estimated_end_at %><br>
-    <%= f.datetime_select :estimated_end_at %>
+    <%= f.date_select :estimated_end_at %>
   </div>
   <div class="field">
     <%= f.label :estimated_duration %><br>
@@ -33,11 +32,11 @@
   </div>
   <div class="field">
     <%= f.label :real_start_at %><br>
-    <%= f.datetime_select :real_start_at %>
+    <%= f.date_select :real_start_at %>
   </div>
   <div class="field">
     <%= f.label :real_end_at %><br>
-    <%= f.datetime_select :real_end_at %>
+    <%= f.date_select :real_end_at %>
   </div>
   <div class="field">
     <%= f.label :real_duration %><br>
@@ -45,9 +44,9 @@
   </div>
   <div class="field">
     <%= f.label :difference_hour %><br>
-    <%= f.datetime_select :difference_hour %>
+    <%= f.date_select :difference_hour %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'success button' %>
   </div>
 <% end %>

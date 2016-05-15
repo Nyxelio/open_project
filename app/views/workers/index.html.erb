@@ -1,31 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Workers</h1>
+<h1>Liste des collaborateurs</h1>
 
-<table>
-  <thead>
+<div class="small-2 large-8">
+  <table>
+    <thead>
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Cost hour</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Coût par heure</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
     <tbody>
-      <% @workers.each do |worker| %>
-        <tr>
-          <td><%= worker.firstname %></td>
-          <td><%= worker.lastname %></td>
-          <td><%= worker.cost_hour %></td>
-          <td><%= link_to 'Show', worker, class: "show" %></td>
-          <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
-          <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
+    <% @workers.each do |worker| %>
+      <tr>
+        <td><%= worker.firstname %></td>
+        <td><%= worker.lastname %></td>
+        <td><%= worker.cost_hour %></td>
+        <td><%= link_to 'Voir', worker, class: "show" %></td>
+        <td><%= link_to 'Editer', edit_worker_path(worker) %></td>
+        <td><%= link_to 'Supprimer', worker, method: :delete, data: { confirm: 'Êtes-vous sure?' } %></td>
+      </tr>
+    <% end %>
     </tbody>
-</table>
+  </table>
+
+</div>
 
 <br>
 
-<%= link_to 'New Worker', new_worker_path, class: "button newWorker" %>
+<%= link_to 'Nouveau collaborateur', new_worker_path, class: "button newWorker" %>
