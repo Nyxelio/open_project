@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "settings";
-tr.alert{
+.alert{
   background-color: $alert-color !important;
 }
 
-tr.warning{
+.warning{
   background-color: $warning-color !important;
 }

@@ -24,7 +24,8 @@ f3 = Family.create(label: 'Webdesign')
 f4 = Family.create(label: 'Stabilisation')
 
 t1 = Task.create(code: 'TEK', label: 'Choix des techno', estimated_start_at: '2016-05-11', estimated_end_at: '2016-05-11', estimated_duration: 16, real_start_at: '2016-05-11', real_end_at: '2016-05-11', real_duration: 0, percent_progress: 100, ratio: 0, project: p1, family: f1 )
-t2 = Task.create(code: 'ARC', label: 'Architecture', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-12', estimated_duration: 6, real_start_at: '2016-05-12', real_end_at: '2016-05-12', real_duration: 0, percent_progress: 100, ratio: 0, project: p1, family: f1 )
+t2 = Task.create(code: 'ARC', label: 'Architecture', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-12', estimated_duration: 6, real_start_at: '2016-05-12', real_end_at: '2016-05-13', real_duration: 0, percent_progress: 100, ratio: 0, project: p1, family: f1 )
+Task.create(code: 'ABC', label: 'Tâche fictive', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-12', estimated_duration: 6, real_start_at: '2016-05-12', real_end_at: '', real_duration: 0, percent_progress: 5, ratio: 0, project: p1, family: f1 )
 t3 = Task.create(code: 'DEV', label: 'Développement', estimated_start_at: '2016-05-12', estimated_end_at: '2016-05-20', estimated_duration: 122, real_start_at: '2016-05-12', real_end_at: '', real_duration: 0, percent_progress: 20, ratio: 0, project: p1, family: f2 )
 
 Activity.create(date_activity: '2016-05-11', num_hours: 2.25, worker: n, task: t1)
@@ -32,8 +33,8 @@ Activity.create(date_activity: '2016-05-11', num_hours: 2.25, worker: cr, task: 
 Activity.create(date_activity: '2016-05-11', num_hours: 2.25, worker: cg, task: t1)
 Activity.create(date_activity: '2016-05-11', num_hours: 2.25, worker: j, task: t1)
 
-Activity.create(date_activity: '2016-05-12', num_hours: 3, worker: n, task: t2)
-Activity.create(date_activity: '2016-05-12', num_hours: 3, worker: cr, task: t2)
+Activity.create(date_activity: '2016-05-12', num_hours: 3.5, worker: n, task: t2)
+Activity.create(date_activity: '2016-05-12', num_hours: 3.5, worker: cr, task: t2)
 
 Activity.create(date_activity: '2016-05-12', num_hours: 3, worker: n, task: t3)
 Activity.create(date_activity: '2016-05-12', num_hours: 3, worker: cr, task: t3)

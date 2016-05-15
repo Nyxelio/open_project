@@ -26,11 +26,24 @@
         <td><%= task.code %></td>
         <td><%= task.label %></td>
         <td><%= task.estimated_start_at %></td>
-        <td><%= task.estimated_end_at %></td>
+        <td class="<%= task.exceeded_day? ? 'alert' : ''%>">
+          <%- if task.exceeded_day? %>
+              <i class="fi-alert"/>
+          <%- end %>
+          <%= task.estimated_end_at %></td>
         <td><%= task.estimated_duration %></td>
         <td><%= task.real_start_at %></td>
-        <td><%= task.real_end_at %></td>
-        <td><%= task.real_duration %></td>
+        <td class="<%= task.exceeded_end_date? ? 'alert' : ''%>">
+          <%- if task.exceeded_end_date? %>
+            <i class="fi-alert"/>
+          <%- end %>
+          <%= task.real_end_at %>
+        </td>
+        <td class="<%= task.exceeded? ? 'warning': ''%>">
+          <%- if task.exceeded? %>
+            <i class="fi-alert"/>
+          <%- end %>
+          <%= task.real_duration %></td>
         <td><%= progress task.percent_progress %></td>
         <td><%= task.ratio.round(2) %></td>
         <td><%= task.remaining %></td>

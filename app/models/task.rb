@@ -8,6 +8,16 @@ class Task < ActiveRecord::Base
     real_duration + sum > estimated_duration
   end
 
+  def exceeded_end_date?(options = {})
+    return false if real_end_at.nil?
+    real_end_at > estimated_end_at
+  end
+
+  def exceeded_day?(options = {})
+    return false if percent_progress == 100
+    Date.today > estimated_end_at
+  end
+
   def remaining
     @remaining ||= estimated_duration - real_duration
   end
