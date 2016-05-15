@@ -14,11 +14,11 @@
   <%= f.input :code %>
   <%= f.input :label %>
   <%= f.input :family_id, as: :select, label_method: :label, collection: Family.all %>
-  <%= f.input :estimated_start_at, as: :string %>
-  <%= f.input :estimated_end_at, as: :string %>
+  <%= f.input :estimated_start_at, as: :string, input_html: {type: 'date'} %>
+  <%= f.input :estimated_end_at, as: :string, input_html: {type: 'date'} %>
   <%= f.input :estimated_duration %>
-  <%= f.input :real_start_at, as: :string %>
-  <%= f.input :real_end_at, as: :string %>
+  <%= f.input :real_start_at, as: :string, input_html: {type: 'date'} %>
+  <%= f.input :real_end_at, as: :string, input_html: {type: 'date'} %>
   <%= f.input :real_duration %>
   <%= f.input :percent_progress %>
   <%= f.input :ratio %>
