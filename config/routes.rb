@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       end
     end
     resources :tasks do
+      collection do
+        get :provisional_schedule
+      end
       resources :activities
     end
   end

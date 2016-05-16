@@ -21,6 +21,14 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def provisional_schedule
+    @pgantt = []
+    # @pgantt << { name: 'test', desc: 'enjoy' }
+    Task.order(estimated_start_at: :asc).find_each do |task|
+      @pgantt << { name: task.family.label, desc: task.label, values: [{ from: "/Date(#{task.estimated_start_at.to_time.to_i*1E3.round(0)})/", to: "/Date(#{task.estimated_end_at.to_time.to_i*1E3.round(0)})/", label: task.label, desc: task.label }] }
+    end
+  end
+
   # POST /tasks
   # POST /tasks.json
   def create

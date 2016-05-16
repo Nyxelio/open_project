@@ -15,6 +15,7 @@
 //= require foundation
 //= require turbolinks
 //= require cocoon
+//= require jquery.fn.gantt
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

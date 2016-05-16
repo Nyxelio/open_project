@@ -16,6 +16,9 @@
         <%=link_to "Activités", project_activities_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
       <li>
+        <%=link_to "Planning prévisionnel", provisional_schedule_project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
+      </li>
+      <li>
         <%=link_to "Collaborateurs", workers_path %>
       </li>
     </ul>
