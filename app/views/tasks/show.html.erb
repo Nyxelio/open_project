@@ -1,54 +1,54 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Code:</strong>
+  <strong><%=	t(:code) %>:</strong>
   <%= @task.code %>
 </p>
 
 <p>
-  <strong>Label:</strong>
+  <strong><%=	t(:label) %>:</strong>
   <%= @task.label %>
 </p>
 
 <p>
-  <strong>Estimated start at:</strong>
+  <strong><%=	t(:estimated_start_at) %>:</strong>
   <%= @task.estimated_start_at %>
 </p>
 
 <p>
-  <strong>Estimated end at:</strong>
+  <strong><%=	t(:estimated_end_at) %>:</strong>
   <%= @task.estimated_end_at %>
 </p>
 
 <p>
-  <strong>Estimated duration:</strong>
+  <strong><%=	t(:estimated_duration) %>:</strong>
   <%= @task.estimated_duration %>
 </p>
 
 <p>
-  <strong>Real start at:</strong>
+  <strong><%=	t(:real_start_at) %>:</strong>
   <%= @task.real_start_at %>
 </p>
 
 <p>
-  <strong>Real end at:</strong>
+  <strong><%=	t(:real_end_at) %>:</strong>
   <%= @task.real_end_at %>
 </p>
 
 <p>
-  <strong>Real duration:</strong>
+  <strong><%=	t(:real_duration) %>:</strong>
   <%= @task.real_duration %>
 </p>
 
 <p>
-  <strong>Percent progress:</strong>
+  <strong><%=	t(:percent_progress) %>:</strong>
   <%= @task.percent_progress %>
 </p>
 
 <p>
-  <strong>Ratio:</strong>
+  <strong><%=	t(:ratio) %>:</strong>
   <%= @task.ratio %>
 </p>
 
-<%= link_to 'Edit', edit_project_task_path(@project, @task), class: 'button' %>
-<%= link_to 'Back', project_tasks_path(@project), class: 'button secondary' %>
+<%= link_to t(:edit_task), edit_project_task_path(@project, @task), class: 'button' %>
+<%= link_to t(:back), project_tasks_path(@project), class: 'button secondary' %>

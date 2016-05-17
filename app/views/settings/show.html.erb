@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Label:</strong>
+  <strong><%=	t(:label) %>:</strong>
   <%= @setting.label %>
 </p>
 
 <p>
-  <strong>Value:</strong>
+  <strong><%=	t(:value) %>:</strong>
   <%= @setting.value %>
 </p>
 
-<%= link_to 'Edit', edit_setting_path(@setting) %> |
-<%= link_to 'Back', settings_path %>
+<%= link_to t(:edit_setting), edit_setting_path(@setting) %> |
+<%= link_to t(:back), settings_path %>

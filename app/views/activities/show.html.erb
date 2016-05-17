@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Num hours:</strong>
+  <strong><%=	t(:num_hours) %>:</strong>
   <%= @activity.num_hours %>
 </p>
 
 <p>
-  <strong>Worker:</strong>
+  <strong><%=	t(:worker) %>:</strong>
   <%= @activity.worker %>
 </p>
 
 <p>
-  <strong>Task:</strong>
+  <strong><%=	t(:task) %>:</strong>
   <%= @activity.task %>
 </p>
 
 <p>
-  <strong>Observation:</strong>
+  <strong><%=	t(:observation) %>:</strong>
   <%= @activity.observation %>
 </p>
 
 <p>
-  <strong>Date activity:</strong>
+  <strong><%=	t(:date) %>:</strong>
   <%= @activity.date_activity %>
 </p>
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+<%= link_to t(:edit), edit_activity_path(@activity), class: 'button' %>
+<%= link_to t(:back), activities_path, class: 'secondary button' %>

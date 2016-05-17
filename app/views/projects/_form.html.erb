@@ -10,14 +10,14 @@
       </ul>
     </div>
   <% end %>
-    <%= f.input :name %>
-    <%= f.input :is_close %>
-    <%= f.input :estimated_start_at, as: :string, input_html: {type: 'date'} %>
-    <%= f.input :estimated_end_at, as: :string, input_html: {type: 'date'} %>
-    <%= f.input :estimated_duration %>
-    <%= f.input :real_start_at, as: :string, input_html: {type: 'date'} %>
-    <%= f.input :real_end_at, as: :string, input_html: {type: 'date'} %>
-    <%= f.input :real_duration %>
-    <%= f.input :difference_hour %>
-    <%= f.button :submit, class: 'success button' %>
+    <%= f.input :name, label: t(:name)%>
+    <%= f.input :is_close, label: t(:is_close) %>
+    <%= f.input :estimated_start_at, label: t(:estimated_start_at), as: :string, input_html: {type: 'date'} %>
+    <%= f.input :estimated_end_at, label: t(:estimated_end_at), as: :string, input_html: {type: 'date'} %>
+    <%= f.input :estimated_duration, label: t(:estimated_duration) %>
+    <%= f.input :real_start_at, label: t(:real_start_at), as: :string, input_html: {type: 'date'} %>
+    <%= f.input :real_end_at, label: t(:real_end_at), as: :string, input_html: {type: 'date'} %>
+    <%= f.input :real_duration, label: t(:real_duration) %>
+    <%= f.input :difference_hour, label: t(:difference_hour) %>
+    <%= f.button :submit, value: action , class: 'success button' %>
 <% end %>

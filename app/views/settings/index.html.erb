@@ -3,7 +3,7 @@
 
 <div class="row expanded">
   <div class="small-2 large-4 columns">
-    <h1>Liste des paramètres</h1>
+    <h1><%=	t(:list_setting) %></h1>
     <%= simple_form_for :setting, :url => update_all_settings_path, html: {method: :put} do %>
       <% @settings.each do |setting| %>
             <%= simple_fields_for 'setting[]', setting do |setting_fields| %>
@@ -11,10 +11,10 @@
             <% end %>
       <% end %>
       <div class="actions">
-        <%= submit_tag("Submit", class: "success button") %>
+        <%= submit_tag(t(:edit_setting), class: "success button") %>
       </div>
     <% end %>
-    <%= link_to 'Nouveau paramètre', new_setting_path, class: "small button" %>
+    <%= link_to t(:new_setting), new_setting_path, class: "small button" %>
   </div>
 </div>
 

@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Prénom:</strong>
+  <strong><%=	t(:name) %>:</strong>
   <%= @worker.name %>
 </p>
 
 <p>
-  <strong>Coût par heure:</strong>
+  <strong><%=	t(:cost_hour) %>:</strong>
   <%= @worker.cost_hour %>
 </p>
 
-<%= link_to 'Editer', edit_worker_path(@worker), class: 'button' %>
-<%= link_to 'Retour', workers_path, class: 'button secondary' %>
+<%= link_to t(:edit_worker), edit_worker_path(@worker), class: 'button' %>
+<%= link_to t(:back), workers_path, class: 'button secondary' %>

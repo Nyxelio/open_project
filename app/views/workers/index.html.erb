@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Liste des collaborateurs</h1>
+<h1><%=	t(:list_worker) %></h1>
 
 <div class="small-2 large-8">
   <table>
     <thead>
     <tr>
-      <th>Nom</th>
-      <th>Coût par heure</th>
+      <th><%=	t(:name) %></th>
+      <th><%=	t(:cost_hour) %></th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -17,9 +17,9 @@
       <tr>
         <td><%= worker.name %></td>
         <td><%= worker.cost_hour %></td>
-        <td><%= link_to 'Voir', worker, class: "show" %></td>
-        <td><%= link_to 'Editer', edit_worker_path(worker) %></td>
-        <td><%= link_to 'Supprimer', worker, method: :delete, data: { confirm: 'Êtes-vous sure?' } %></td>
+        <td><%= link_to t(:show), worker, class: "show" %></td>
+        <td><%= link_to t(:edit), edit_worker_path(worker) %></td>
+        <td><%= link_to t(:destroy), worker, method: :delete, data: { confirm: t(:confirm) } %></td>
       </tr>
     <% end %>
     </tbody>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'Nouveau collaborateur', new_worker_path, class: "button newWorker" %>
+<%= link_to t(:new_worker), new_worker_path, class: "button newWorker" %>

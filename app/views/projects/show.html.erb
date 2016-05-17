@@ -1,49 +1,49 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t(:name) %>:</strong>
   <%= @project.name %>
 </p>
 
 <p>
-  <strong>Is close:</strong>
+  <strong><%= t(:is_close) %>:</strong>
   <%= @project.is_close %>
 </p>
 
 <p>
-  <strong>Estimated start at:</strong>
+  <strong><%= t(:estimated_start_at) %>:</strong>
   <%= @project.estimated_start_at %>
 </p>
 
 <p>
-  <strong>Estimated end at:</strong>
+  <strong><%= t(:estimated_end_at) %>:</strong>
   <%= @project.estimated_end_at %>
 </p>
 
 <p>
-  <strong>Estimated duration:</strong>
+  <strong><%= t(:estimated_duration) %>:</strong>
   <%= @project.estimated_duration %>
 </p>
 
 <p>
-  <strong>Real start at:</strong>
+  <strong><%= t(:real_start_at) %>:</strong>
   <%= @project.real_start_at %>
 </p>
 
 <p>
-  <strong>Real end at:</strong>
+  <strong><%= t(:real_end_at) %>:</strong>
   <%= @project.real_end_at %>
 </p>
 
 <p>
-  <strong>Real duration:</strong>
+  <strong><%= t(:real_duration) %>:</strong>
   <%= @project.real_duration %>
 </p>
 
 <p>
-  <strong>Difference hour:</strong>
+  <strong><%= t(:difference_hour) %>:</strong>
   <%= @project.difference_hour %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to t(:edit), edit_project_path(@project) %> |
+<%= link_to t(:back), projects_path %>

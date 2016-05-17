@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Liste des catégories</h1>
+<h1><%=	t(:list_category) %></h1>
 
 <div class="small-2 large-6">
   <table>
     <thead>
     <tr>
-      <th>Nom</th>
+      <th><%=	t(:name) %></th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -15,9 +15,9 @@
     <% @families.each do |family| %>
       <tr>
         <td><%= family.label %></td>
-        <td><%= link_to 'Voir', family %></td>
-        <td><%= link_to 'Editer', edit_family_path(family) %></td>
-        <td><%= link_to 'Supprimer', family, method: :delete, data: { confirm: 'Êtes-vous sure?' } %></td>
+        <td><%= link_to t(:show), family %></td>
+        <td><%= link_to t(:edit), edit_family_path(family) %></td>
+        <td><%= link_to t(:destroy), family, method: :delete, data: { confirm: t(:confirm) } %></td>
       </tr>
     <% end %>
     </tbody>
@@ -26,4 +26,4 @@
 </div>
 <br>
 
-<%= link_to 'Nouvelle catégorie', new_family_path, class: 'button' %>
+<%= link_to t(:new_category), new_family_path, class: 'button' %>

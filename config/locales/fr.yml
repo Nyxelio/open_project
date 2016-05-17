@@ -1,0 +1,81 @@
+fr:
+  # Common
+  name: "Nom"
+  label: "Libellé"
+  estimated_start_at: "Date de début estimé"
+  estimated_end_at: "Date de fin estimé"
+  estimated_duration: "Durée estimé"
+  real_start_at: "Date de début réel"
+  real_end_at: "Date de fin réel"
+  real_duration: "Durée réel"
+
+  # Action
+  create: "Créer"
+  add: "Ajouter"
+  new: "Ajouter"
+  edit: "Modifier"
+  destroy: "Supprimer"
+  add_item: "Ajouter un item"
+  update: "Mettre à jour"
+  cancel: "Annuler"
+  back: "Retour"
+  show: "Détail"
+  confirm: "Êtes vous sûr ?"
+
+  # Project
+  list_projects: "Liste des projets"
+  new_project: "Nouveau projet"
+  create_project: "Créer le projet"
+  edit_project: "Editer le projet"
+  is_close: "Cloturé"
+  difference_hour: "Difference horaire"
+
+  # task
+  new_task: "Nouvelle tâche"
+  create_task: "Créer une tâche"
+  edit_task: "Editer la tâche"
+  summary: "Récapitulatif"
+  code:  "Code"
+  percent_progress: "Pourcentage de progression"
+  ratio: "Ratio"
+  remaining: "Restant"
+  family_id: "Catégorie"
+
+  # activities
+  summary_activities: "Récapitulatif des activités"
+  create_activity: "Créer une activité"
+  edit_activity: "Editer l'activité"
+  date: "Date"
+  worker: "Collaborateur"
+  num_hours: "Nombre d'heures"
+  task: "Tâche"
+  observation: "Observation"
+
+  # Worker
+  list_worker: "Liste des collaborateurs"
+  new_worker: "Nouveau collaborateur"
+  create_worker: "Créer le collaborateur"
+  edit_worker: "Editer le collaborateur"
+  cost_hour: "Coût par heure"
+
+  # Category
+  list_category: "Liste des catégories"
+  new_category: "Ajout d'une catégorie"
+  create_category: "Créer la categorie"
+  edit_category: "Editer la catégorie"
+
+  # settings
+  list_setting: "Liste des paramètres"
+  hour_per_day: "Horaire par jour"
+  new_setting: "Nouveau paramètre"
+  edit_setting: "Editer le paramètre"
+  value: "Valeur"
+
+  # top bar
+  projects: "Projets"
+  categories: "Catégories"
+  tasks: "Tâches"
+  activities: "Activités"
+  workers: "Collaborateurs"
+  settings: "Paramètres"
+  provisional_schedule: "Planning prévisionnel"

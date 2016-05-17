@@ -20,4 +20,83 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  # Common
+  name: "Name"
+  label: "Label"
+  estimated_start_at: "Estimated start at"
+  estimated_end_at: "Estimated end at"
+  estimated_duration: "Estimated duration"
+  real_start_at: "Real start at"
+  real_end_at: "Real end at"
+  real_duration: "Real duration"
+
+  # Action
+  create: "Create"
+  add: "Add"
+  new: "New"
+  edit: "Edit"
+  destroy: "Destroy"
+  add_item: "Add item"
+  update: "Update"
+  cancel: "Cancel"
+  show: "Show"
+  back: "Back"
+  confirm: "Are you sure ?"
+
+  # Project
+  list_projects: "List of projects"
+  new_project: "New project"
+  create_project: "Create project"
+  edit_project: "Editing Project"
+  is_close: "Closed"
+  difference_hour: "Difference hour"
+
+  # task
+  new_task: "New task"
+  create_task: "Create task"
+  edit_task: "Editing task"
+  summary: "Summary"
+  code:  "Code"
+  percent_progress: "Percent progress"
+  ratio: "Ratio"
+  remaining: "Remaining"
+  family_id: "Category"
+
+  # activities
+  summary_activities: "Summary of activities"
+  create_activity: "Create activity"
+  edit_activity: "Editing activity"
+  date: "Date"
+  worker: "Worker"
+  num_hours: "Number of hours"
+  task: "Task"
+  observation: "Observation"
+
+  # Worker
+  list_worker: "List of workers"
+  new_worker: "New worker"
+  create_worker: "Create worker"
+  edit_worker: "Editing worker"
+  cost_hour: "Cost per hour"
+
+  # Category
+  list_category: "List of categories"
+  new_category: "New category"
+  create_category: "Create category"
+  edit_category: "Editing category"
+
+  # settings
+  list_setting: "List of settings"
+  hour_per_day: "Hour per day"
+  new_setting: "New setting"
+  edit_setting: "Editing Setting"
+  value: "Value"
+
+  # top bar
+  projects: "Projects"
+  categories: "Categories"
+  tasks: "Tasks"
+  activities: "Activities"
+  workers: "Workers"
+  settings: "Settings"
+  provisional_schedule: "Provisional schedule"

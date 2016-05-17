@@ -1,8 +1,8 @@
 <div class="small-2 large-4 columns">
-  <h1>Editing Worker</h1>
+  <h1><%=	t(:edit_worker) %></h1>
 
-  <%= render 'form' %>
+  <%= render 'form', action: t(:edit) %>
 
-  <%= link_to 'Détail', @worker, class: 'button' %>
-  <%= link_to 'Retour', workers_path, class: 'button secondary' %>
+  <%= link_to t(:show), @worker, class: 'button' %>
+  <%= link_to t(:back) , workers_path, class: 'button secondary' %>
 </div>

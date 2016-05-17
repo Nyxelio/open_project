@@ -1,6 +1,10 @@
-<h1>Editing Task</h1>
+<div class="row expanded">
+  <div class="small-2 large-4 columns">
+    <h1><%=	t(:edit_task) %></h1>
 
-<%= render 'form' %>
+    <%= render 'form', action: t(:edit) %>
 
-<%= link_to 'Show', project_task_path(@project, @task), class: 'button' %>
-<%= link_to 'Back', project_tasks_path(@project), class: 'button secondary' %>
+    <%= link_to t(:show), project_task_path(@project, @task), class: 'button' %>
+    <%= link_to t(:back), project_tasks_path(@project), class: 'button secondary' %>
+  </div>
+</div>

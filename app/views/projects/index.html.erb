@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Liste des projets</h1>
+<h1><%= t(:list_projects) %></h1>
 
 
 <div class="small-2 large-10">
   <table>
     <thead>
     <tr>
-      <th>Nom</th>
-      <th>Is close</th>
-      <th>Estimated start at</th>
-      <th>Estimated end at</th>
-      <th>Estimated duration</th>
-      <th>Real start at</th>
-      <th>Real end at</th>
-      <th>Real duration</th>
-      <th>Difference hour</th>
+      <th><%= t(:name) %></th>
+      <th><%= t(:is_close) %></th>
+      <th><%= t(:estimated_start_at) %></th>
+      <th><%= t(:estimated_end_at) %></th>
+      <th><%= t(:estimated_duration) %></th>
+      <th><%= t(:real_start_at) %></th>
+      <th><%= t(:real_end_at) %></th>
+      <th><%= t(:real_duration) %></th>
+      <th><%= t(:difference_hour) %></th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -32,9 +32,9 @@
         <td><%= project.real_end_at %></td>
         <td><%= project.real_duration %></td>
         <td><%= project.difference_hour %></td>
-        <td><%= link_to 'Voir', project %></td>
-        <td><%= link_to 'Editer', edit_project_path(project) %></td>
-        <td><%= link_to 'Supprimer', project, method: :delete, data: { confirm: 'Êtes vous sure?' } %></td>
+        <td><%= link_to t(:show), project %></td>
+        <td><%= link_to t(:edit), edit_project_path(project) %></td>
+        <td><%= link_to t(:destroy), project, method: :delete, data: { confirm: t(:confirm) } %></td>
       </tr>
     <% end %>
     </tbody>
@@ -54,4 +54,4 @@
   <% end %>
 </div>
 
-<%= link_to 'New Project', new_project_path, class: "button newProject" %>
+<%= link_to t(:new_project), new_project_path, class: "button newProject" %>

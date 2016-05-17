@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Label:</strong>
+  <strong><%=	t(:label) %>:</strong>
   <%= @family.label %>
 </p>
 
-<%= link_to 'Edit', edit_family_path(@family), class: 'small button' %>
-<%= link_to 'Back', families_path, class: 'small secondary button' %>
+<%= link_to t(:edit_category), edit_family_path(@family), class: 'small button' %>
+<%= link_to t(:back), families_path, class: 'small secondary button' %>

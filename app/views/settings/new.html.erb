@@ -1,9 +1,9 @@
 <div class="row expanded">
   <div class="small-2 large-4 columns">
-    <h1>Nouveau paramètre</h1>
+    <h1><%=	t(:new_setting) %></h1>
 
-    <%= render 'form' %>
+    <%= render 'form', action: t(:create) %>
 
-    <%= link_to 'Retour', settings_path, class: 'button secondary' %>
+    <%= link_to t(:back), settings_path, class: 'button secondary' %>
   </div>
 </div>
