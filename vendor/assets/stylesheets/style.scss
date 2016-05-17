@@ -105,7 +105,7 @@
 .fn-gantt .dataPanel {
     margin-left: 0px;
     border-right: 1px solid #DDD;
-    background-image: asset_path('/img/grid.png');
+    background-image: url(asset-path('img/grid.png'));
     background-repeat: repeat;
     background-position: 24px 24px;
     position: relative;
@@ -292,7 +292,7 @@
 .fn-gantt .navigate .nav-slider-button {
     width: 17px;
     height: 60px;
-    background: asset_path('/img/slider_handle.png') center center no-repeat;
+    background: url(asset-path('img/slider_handle.png')) center center no-repeat;
     left: 0px;
     top: 0px;
     margin: -26px 0 0 0;
@@ -323,7 +323,7 @@
     width: 20px;
     height: 20px;
     font-size: 0px;
-    background: #595959 asset_path('/img/icon_sprite.png') !important;
+    background: #595959 url(asset-path('img/icon_sprite.png')) !important;
     border: 1px solid #454546;
     cursor: pointer;
     vertical-align: top;

@@ -9,7 +9,7 @@ $.loadGantt= ->
     minScale: 'days'
     maxScale: 'months'
     navigate: 'scroll'
-  console.log $("#provisionalSchedule").data('provisional-gantt')
+    dow: ['D','L','M','M','J','V','S']
 
 $(document).ready $.loadGantt
 $(document).on 'page:load', $.loadGantt
