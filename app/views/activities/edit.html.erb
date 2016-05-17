@@ -1,6 +1,6 @@
-<h1><%=	t(:edit_activity) %></h1>
+<h1><%=	t(:edit_activity, scope: 'actions') %></h1>
 
-<%= render 'form', action: t(:edit) %>
+<%= render 'form', action: t(:edit, scope: 'actions') %>
 
-<%= link_to t(:show), @activity, class: 'button' %>
-<%= link_to t(:back), activities_path, class: 'secondary button' %>
+<%= link_to t(:show, scope: 'actions'), @activity, class: 'button' %>
+<%= link_to t(:back, scope: 'actions'), activities_path, class: 'secondary button' %>

@@ -1,7 +1,7 @@
 <%= simple_form_for [@project, @task] do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(@task.errors.count, "error", scope: 'actions') %> prohibited this task from being saved:</h2>
 
       <ul>
       <% @task.errors.full_messages.each do |message| %>
@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
-  <%= f.input :code, label: t(:code) %>
-  <%= f.input :label, label: t(:label) %>
+  <%= f.input :code, label: t(:code, scope: 'actions') %>
+  <%= f.input :label, label: t(:label, scope: 'actions') %>
   <%= f.input :family_id, label: t(:family_id), as: :select, label_method: :label, collection: Family.all %>
   <%= f.input :estimated_start_at, label: t(:estimated_start_at), as: :string, input_html: {type: 'date'} %>
   <%= f.input :estimated_end_at,label: t(:estimated_end_at), as: :string, input_html: {type: 'date'} %>
-  <%= f.input :estimated_duration, label: t(:estimated_duration) %>
+  <%= f.input :estimated_duration, label: t(:estimated_duration, scope: 'actions') %>
   <%= f.input :real_start_at, label: t(:real_start_at), as: :string, input_html: {type: 'date'} %>
   <%= f.input :real_end_at, label: t(:real_end_at), as: :string, input_html: {type: 'date'} %>
-  <%= f.input :real_duration, label: t(:real_duration) %>
-  <%= f.input :percent_progress, label: t(:percent_progress) %>
-  <%= f.input :ratio, label: t(:ratio) %>
+  <%= f.input :real_duration, label: t(:real_duration, scope: 'actions') %>
+  <%= f.input :percent_progress, label: t(:percent_progress, scope: 'actions') %>
+  <%= f.input :ratio, label: t(:ratio, scope: 'actions') %>
   <%= f.button :submit, value: action, class: 'success button' %>
 <% end %>

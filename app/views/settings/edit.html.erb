@@ -1,6 +1,6 @@
-<h1><%=	t(:edit_setting) %></h1>
+<h1><%=	t(:edit_setting, scope: 'actions') %></h1>
 
-<%= render 'form', action: t(:edit) %>
+<%= render 'form', action: t(:edit, scope: 'actions') %>
 
-<%= link_to t(:show), @setting %> |
-<%= link_to t(:back), settings_path %>
+<%= link_to t(:show, scope: 'actions'), @setting %> |
+<%= link_to t(:back, scope: 'actions'), settings_path %>

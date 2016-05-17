@@ -10,19 +10,112 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require foundation_and_overrides
  *= require style
  *= require_tree .
  *= require_self
 
  */
 @import "foundation-icons";
-
+@import "settings";
+@import "foundation_and_overrides";
 
 #core {
-  margin: 0 30px;
+  //margin: 0 30px;
+  margin-top: -15px;
+
+  h1.title {
+    background-color: rgba(250,250,250,0.95);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+    font-size: 22px;
+    color: #0079b9;
+    font-weight: bold;
+    padding: 20px;
+  }
 }
 
 .top-bar-left ul > li:hover {
   background-color: white;
+}
+
+.menu-text {
+  color: $white;
+}
+
+table {
+  margin-bottom: 0;
+}
+
+thead {
+  border-bottom: 1px solid #d8d8d8;
+  color: #777;
+  box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+
+thead th {
+  color: #777;
+  font-size: 14px;
+  height: 40px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tr {
+  height: 60px;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ededed;
+  box-sizing: border-box;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+tbody tr {
+  padding: 10px;
+}
+
+.actions {
+  height: 60px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #ededed;
+  box-sizing: border-box;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.3);
+  padding: 10px;
+
+  .button {
+    width: 100%
+  }
+}
+
+.progress {
+  height: 30px;
+  margin-bottom: 0;
+}
+
+tbody {
+  color: #2C2C2C;
+  .code {
+    width: 100%;
+    display: block;
+  }
+  .code-label {
+    width: 100%;
+    display: block;
+    color: $dark-gray;
+  }
+}
+
+.lbl-success {
+  color: $success-color;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.lbl-alert {
+  color: $alert-color;
+  font-size: 18px;
+  font-weight: bold;
 }

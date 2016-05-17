@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t(:summary_activities) %> </h1>
+<h1><%= t(:summary_activities, scope: 'actions') %> </h1>
 
 <%= simple_form_for([@project, @activity], url: project_activities_path, remote: :true, class: 'activity_form') do |f| %>
     <% if @activity.errors.any? %>
@@ -17,11 +17,11 @@
 <table>
   <thead>
     <tr>
-      <th><%= t(:date) %></th>
-      <th><%= t(:worker) %></th>
-      <th><%= t(:num_hours) %></th>
-      <th><%= t(:task) %></th>
-      <th><%= t(:observation) %></th>
+      <th><%= t(:date, scope: 'actions') %></th>
+      <th><%= t(:worker, scope: 'actions') %></th>
+      <th><%= t(:num_hours, scope: 'actions') %></th>
+      <th><%= t(:task, scope: 'actions') %></th>
+      <th><%= t(:observation, scope: 'actions') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,7 +32,7 @@
     <% end %>
   </tbody>
   <tfoot>
-    <%= render partial: 'form', locals: {f: f, action: t(:create_activity)} %>
+    <%= render partial: 'form', locals: {f: f, action: t(:create_activity, scope: 'actions')} %>
   </tfoot>
 </table>
 

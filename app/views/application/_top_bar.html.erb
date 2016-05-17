@@ -3,29 +3,29 @@
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Open Project</li>
       <li>
-        <%=link_to t(:projects), projects_path %>
+        <%=link_to t(:projects, scope: 'actions'), projects_path %>
       </li>
       <li>
-        <%=link_to t(:categories), families_path %>
+        <%=link_to t(:categories, scope: 'actions'), families_path %>
       </li>
       <li>
-        <%=link_to t(:tasks), project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
+        <%=link_to t(:tasks, scope: 'actions'), project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
 
       <li>
-        <%=link_to t(:activities), project_activities_path(@project) unless @project.nil? or @project.new_record? %>
+        <%=link_to t(:activities, scope: 'actions'), project_activities_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
       <li>
-        <%=link_to t(:provisional_schedule), provisional_schedule_project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
+        <%=link_to t(:provisional_schedule, scope: 'actions'), provisional_schedule_project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
       <li>
-        <%=link_to t(:workers), workers_path %>
+        <%=link_to t(:workers, scope: 'actions'), workers_path %>
       </li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-      <li><%= link_to ' '+ t(:settings), settings_path, class: "fi-wrench" %></li>
+      <li><%= link_to ' '+ t(:settings, scope: 'actions'), settings_path, class: "fi-wrench" %></li>
     </ul>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <%= simple_form_for(@worker) do |f| %>
   <% if @worker.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@worker.errors.count, "error") %> prohibited this worker from being saved:</h2>
+      <h2><%= pluralize(@worker.errors.count, "error", scope: 'actions') %> prohibited this worker from being saved:</h2>
 
       <ul>
       <% @worker.errors.full_messages.each do |message| %>
@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <%= f.input :name, label: t(:name) %>
-  <%= f.input :cost_hour,label: t(:cost_hour) %>
+  <%= f.input :name, label: t(:name, scope: 'actions') %>
+  <%= f.input :cost_hour,label: t(:cost_hour, scope: 'actions') %>
   <%= f.button :submit, class: 'success button', value: action %>
 <% end %>

@@ -1,37 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%=	t(:summary) %></h1>
+<h1 class="title"><%=	t(:summary, scope: 'actions') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th><%=	t(:code) %></th>
-      <th><%=	t(:label) %></th>
-      <th><%=	t(:estimated_start_at) %></th>
-      <th><%=	t(:estimated_end_at) %></th>
-      <th><%=	t(:estimated_duration) %></th>
-      <th><%=	t(:real_start_at) %></th>
-      <th><%=	t(:real_end_at) %></th>
-      <th><%=	t(:real_duration) %></th>
-      <th><%=	t(:percent_progress) %></th>
-      <th><%=	t(:ratio) %></th>
-      <th><%=	t(:remaining) %></th>
-      <th colspan="3"></th>
+      <th><%=	t(:label, scope: 'actions') %></th>
+      <th><%=	t(:estimated_start_at, scope: 'actions') %></th>
+      <th><%=	t(:estimated_end_at, scope: 'actions') %></th>
+      <th><%=	t(:real_start_at, scope: 'actions') %></th>
+      <th><%=	t(:real_end_at, scope: 'actions') %></th>
+      <th><%=	t(:estimated_duration, scope: 'actions') %></th>
+      <th><%=	t(:real_duration, scope: 'actions') %></th>
+      <th><%=	t(:remaining, scope: 'actions') %></th>
+      <th><%=	t(:percent_progress, scope: 'actions') %></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.code %></td>
-        <td><%= task.label %></td>
-        <td><%= task.estimated_start_at %></td>
+        <td><span class="code"><%= task.code %></span>
+        <span class="code-label"><%= task.label %></span></td>
+        <td><%= date task.estimated_start_at %></td>
         <td class="<%= task.exceeded_day? ? 'alert' : ''%>">
           <%- if task.exceeded_day? %>
               <i class="fi-alert"/>
           <%- end %>
           <%= task.estimated_end_at %></td>
-        <td><%= task.estimated_duration %></td>
         <td><%= task.real_start_at %></td>
         <td class="<%= task.exceeded_end_date? ? 'alert' : ''%>">
           <%- if task.exceeded_end_date? %>
@@ -39,22 +36,19 @@
           <%- end %>
           <%= task.real_end_at %>
         </td>
+        <td><%= task.estimated_duration %></td>
         <td class="<%= task.exceeded? ? 'warning': ''%>">
           <%- if task.exceeded? %>
             <i class="fi-alert"/>
           <%- end %>
           <%= task.real_duration %></td>
+        <td><span class="<%= task.remaining > 0 ? 'lbl-success' : 'lbl-alert' %>" ><%= task.remaining %></span><span> (<%= task.ratio.round(2)%>)</span></td>
         <td><%= progress task.percent_progress %></td>
-        <td><%= task.ratio.round(2) %></td>
-        <td><%= task.remaining %></td>
-        <td><%= link_to t(:show), project_task_path(@project, task) %></td>
-        <td><%= link_to t(:edit), edit_project_task_path(@project, task) %></td>
-        <td><%= link_to t(:destroy), project_task_path(@project, task), method: :delete, data: { confirm: t(:confirm) } %></td>
+        <td><%= link_to "<i class='fi-pencil'></i>".html_safe, edit_project_task_path(@project, task) %> <%= link_to "<i class='fi-x'></i>".html_safe, project_task_path(@project, task), method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t(:new_task), new_project_task_path, class: 'button' %>
+<div class="actions">
+  <%= link_to t(:new_task, scope: 'actions'), new_project_task_path, class: 'button' %>
+</div>

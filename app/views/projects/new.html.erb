@@ -1,9 +1,9 @@
 <div class="row expanded">
   <div class="small-2 large-4 columns">
-    <h1> <%= t(:new_project) %></h1>
+    <h1> <%= t(:new_project, scope: 'actions') %></h1>
 
-    <%= render 'form', action: t(:create) %>
+    <%= render 'form', action: t(:create, scope: 'actions') %>
 
-    <%= link_to t(:back), projects_path, class: 'secondary button' %>
+    <%= link_to t(:back, scope: 'actions'), projects_path, class: 'secondary button' %>
   </div>
 </div>

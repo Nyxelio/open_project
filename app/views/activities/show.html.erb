@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%=	t(:num_hours) %>:</strong>
+  <strong><%=	t(:num_hours, scope: 'actions') %>:</strong>
   <%= @activity.num_hours %>
 </p>
 
 <p>
-  <strong><%=	t(:worker) %>:</strong>
+  <strong><%=	t(:worker, scope: 'actions') %>:</strong>
   <%= @activity.worker %>
 </p>
 
 <p>
-  <strong><%=	t(:task) %>:</strong>
+  <strong><%=	t(:task, scope: 'actions') %>:</strong>
   <%= @activity.task %>
 </p>
 
 <p>
-  <strong><%=	t(:observation) %>:</strong>
+  <strong><%=	t(:observation, scope: 'actions') %>:</strong>
   <%= @activity.observation %>
 </p>
 
 <p>
-  <strong><%=	t(:date) %>:</strong>
+  <strong><%=	t(:date, scope: 'actions') %>:</strong>
   <%= @activity.date_activity %>
 </p>
 
-<%= link_to t(:edit), edit_activity_path(@activity), class: 'button' %>
-<%= link_to t(:back), activities_path, class: 'secondary button' %>
+<%= link_to t(:edit, scope: 'actions'), edit_activity_path(@activity), class: 'button' %>
+<%= link_to t(:back, scope: 'actions'), activities_path, class: 'secondary button' %>
