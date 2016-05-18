@@ -24,14 +24,15 @@
       <li>
         <%=link_to t(:summary, scope: 'actions'), summary_project_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
+      <li><%= link_to '', settings_path, class: "fi-wrench" %></li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
       <%- unless current_user.nil? %>
-        <li><%= link_to current_user.email %></li>
+        <li><i class="fi-torso"></i> <%= current_user.email %></li>
+        <li><%= link_to '', destroy_user_session_url(current_user), class: "fi-power" %></li>
       <%- end %>
-      <li><%= link_to ' '+ t(:settings, scope: 'actions'), settings_path, class: "fi-wrench" %></li>
     </ul>
   </div>
 </div>

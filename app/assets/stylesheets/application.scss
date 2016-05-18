@@ -35,10 +35,23 @@
 
 .top-bar-left ul > li:hover {
   background-color: white;
+  a {
+    color: $primary-color;
+  }
+}
+
+.top-bar-left ul li a {
+  color: $white;
+}
+
+.top-bar-right ul li a {
+  color: #26475E;
+  line-height: 20px;
 }
 
 .menu-text {
-  color: $white;
+  color: #26475E;
+  font-size: 22px;
 }
 
 table {
