@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="title"><%= t(:summary_activities, scope: 'actions') %> </h1>
+<h1 class="title">
+  <%= t(:summary_activities, scope: 'actions') %>
+  <%= form_tag(filter_project_activities_path(@project), {method: :get, remote: true}) do %>
+    <%= label_tag(:q, 'Mois:') %>
+    <%= select_tag 'activity[month]', options_for_select(t('date.month_names')) %>
+    <%=	label_tag(:q, 'Année:') %>
+    <%= text_field_tag('activity[year]') %>
+    <%= label_tag(:q, t(:worker, scope: 'actions')) %>
+    <%= select_tag 'activity[worker]', options_from_collection_for_select(@workers, 'id', 'name'), include_blank: true%>
+    <%= submit_tag(t(:filter, scope: 'actions')) %>
+  <% end %>
+</h1>
 
 <%= simple_form_for([@project, @activity], url: project_activities_path, remote: :true, class: 'activity_form') do |f| %>
     <% if @activity.errors.any? %>

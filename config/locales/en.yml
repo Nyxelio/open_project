@@ -42,6 +42,7 @@ en:
   show: "Show"
   back: "Back"
   confirm: "Are you sure ?"
+  filter: "Filter"
 
   # Project
   list_projects: "List of projects"
