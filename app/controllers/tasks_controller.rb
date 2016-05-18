@@ -24,7 +24,16 @@ class TasksController < ApplicationController
   def provisional_schedule
     @pgantt = []
     Task.order(estimated_start_at: :asc).find_each do |task|
-      @pgantt << { name: task.family.label, desc: task.label, values: [{ from: "/Date(#{task.estimated_start_at.to_time.to_i*1E3.round(0)})/", to: "/Date(#{task.estimated_end_at.to_time.to_i*1E3.round(0)})/", label: task.label, desc: task.label }] }
+      end_date = task.real_end_at.nil? ? Date.today : task.real_end_at
+
+      values = [{ from: "/Date(#{task.estimated_start_at.to_time.to_i*1E3.round(0)})/", to: "/Date(#{task.estimated_end_at.to_time.to_i*1E3.round(0)})/", label: task.label, desc: task.label, customClass: 'bg-primary' },{ from: "/Date(#{task.real_start_at.to_time.to_i*1E3.round(0)})/", to: "/Date(#{end_date.to_time.to_i*1E3.round(0)})/", label: "#{task.label} (#{task.percent_progress}%)", desc: "#{task.label} (#{task.percent_progress}%)", customClass: 'bg-warning'}]
+
+      if !task.real_end_at.nil? and !task.estimated_end_at.nil? and task.real_end_at > task.estimated_end_at
+        exceed = { from: "/Date(#{task.estimated_end_at.next_day.to_time.to_i*1E3.round(0)})/", to: "/Date(#{task.real_end_at.to_time.to_i*1E3.round(0)})/", label: "#{(task.real_end_at - task.estimated_end_at).to_i}j", desc: '', customClass: 'bg-alert'  }
+        values.push exceed
+      end
+
+      @pgantt << { name: task.family.label, desc: task.label, values: values }
     end
   end
 

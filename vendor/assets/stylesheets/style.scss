@@ -36,7 +36,7 @@
 
 .fn-gantt .leftPanel {
     float: left;
-    width: 225px;
+    width: 265px;
     overflow: hidden;
     border-right: 1px solid #DDD;
     position: relative;
@@ -45,8 +45,8 @@
 
 .fn-gantt .row {
     float: left;
-    height: 24px;
-    line-height: 24px;
+    height: 72px;
+    line-height: 72px;
     margin-left: -1px;
 }
 .fn-gantt .row.header {
@@ -57,7 +57,7 @@
     display: inline-block;
     margin: 0 0 0 5px;
     color: #484A4D;
-    width: 110px;
+    width: 120px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -68,19 +68,19 @@
 }
 .fn-gantt .leftPanel .name, .fn-gantt .leftPanel .desc {
     float: left;
-    height: 23px;
+    height: 69px;
     margin: 0;
     border-bottom: 1px solid #DDD;
     background-color: #f6f6f6;
 }
 
 .fn-gantt .leftPanel .name {
-    width: 110px;
+    width: 140px;
     font-weight: bold;
 }
 
 .fn-gantt .leftPanel .desc {
-    width: 115px;
+    width: 125px;
 }
 
 .fn-gantt .leftPanel .fn-wide, .fn-gantt .leftPanel .fn-wide .fn-label {
@@ -107,13 +107,13 @@
     border-right: 1px solid #DDD;
     background-image: url(asset-path('img/grid.png'));
     background-repeat: repeat;
-    background-position: 24px 24px;
+    background-position: 72px 72px;
     position: relative;
 }
 .fn-gantt .day, .fn-gantt .date {
     overflow: visible;
-    width: 24px;
-    line-height: 24px;
+    width: 72px;
+    line-height: 72px;
     text-align: center;
     border-left: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
@@ -126,26 +126,26 @@
 
 .fn-gantt .holiday {
     background-color: #ffd263;
-    height: 23px;
+    height: 69px;
     margin: 0 0 -1px -1px;
 }
 
 .fn-gantt .today {
     background-color: #fff8da;
-    height: 23px;
+    height: 69px;
     margin: 0 0 -1px -1px;
     font-weight: bold;
     text-align: center;
 }
 
 .fn-gantt .sa, .fn-gantt .sn, .fn-gantt .wd {
-    height: 23px;
+    height: 69px;
     margin: 0 0 0 -1px;
     text-align: center;
 }
 
 .fn-gantt .sa, .fn-gantt .sn {
-    color: #939496;
+    color: #939472;
     background-color: #f5f5f5;
     text-align: center;
 }
@@ -160,7 +160,7 @@
     overflow: hidden;
     border-left: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
-    height: 23px;
+    height: 69px;
     margin: 0 0 0 -1px;
     background-color: #f6f6f6;
     font-weight: bold;
@@ -184,7 +184,7 @@
 
 .fn-gantt .bar {
     background-color: #D0E4FD;
-    height: 18px;
+    height: 72px;
     margin: 0px 3px 3px 0px;
     position: absolute;
     z-index: 10;
@@ -198,7 +198,7 @@
 }
 
 .fn-gantt .bar .fn-label {
-    line-height: 18px;
+    line-height: 72px;
     font-weight: bold;
     white-space: nowrap;
     width: 100%;
@@ -382,7 +382,7 @@
 }
 
 .fn-gantt .navigate .nav-zoomOut {
-    background-position: 1px -96px !important;
+    background-position: 1px -72px !important;
 }
 
 .fn-gantt .navigate .nav-zoomIn {

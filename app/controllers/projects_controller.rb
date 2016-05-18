@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :summary]
 
   # GET /projects
   # GET /projects.json
@@ -20,6 +20,34 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+  end
+
+  def summary
+    ########
+    @activities_series = []
+
+    @dates = @project.tasks.collect{ |task| task.activities.collect(&:date_activity) }.flatten.uniq
+
+    tasks = @project.tasks
+    tasks.each do |task|
+      data_task = { name: task.label, data: [] }
+      @dates.each do |date|
+        sum = Activity.where(task: task, date_activity: date).sum(:num_hours).to_f || 0
+        data_task[:data] << sum
+      end
+      @activities_series << data_task
+    end
+
+    @dates.collect!{|date| l date}
+
+
+    ########
+    total_hours = @project.tasks.collect(&:real_duration).flatten.inject(0, :+)
+    @tasks_series = []
+    @tasks_series = @project.tasks.collect do |task|
+      { name: "#{task.label} (#{task.real_duration.to_f}h)", value: task.real_duration.to_f, y: (task.real_duration/total_hours * 100).round(0).to_f }
+    end
+
   end
 
   # POST /projects

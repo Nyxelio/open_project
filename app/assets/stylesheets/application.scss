@@ -21,7 +21,7 @@
 
 #core {
   //margin: 0 30px;
-  margin-top: -15px;
+  //margin-top: -15px;
 
   h1.title {
     background-color: rgba(250,250,250,0.95);
@@ -118,4 +118,40 @@ tbody {
   color: $alert-color;
   font-size: 18px;
   font-weight: bold;
+}
+
+
+.bar {
+  &.bg-primary {
+    background-color: transparentize($primary-color, 0.2);
+
+  }
+  &.bg-warning {
+    background-color: transparentize($warning-color, 0.2);
+    margin-top: 12px;
+    height: 60px;
+  }
+  &.bg-alert {
+    background-color: transparentize($alert-color, 0.2);
+    margin-top: 0;
+    height: 12px;
+  }
+}
+
+.fn-gantt .bar.bg-alert .fn-label {
+  line-height: 12px;
+}
+
+
+
+/*reset for gantt*/
+.row .row{
+  &.day, &.date {
+    margin: -1px 0 0 -1px;
+    text-align: center;
+  }
+}
+.fn-gantt .row.header {
+  width: 100%;
+  max-width: 100%;
 }
