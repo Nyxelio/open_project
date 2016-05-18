@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create!(email: 'demo@open-project.com', password:'azerty123')
+
 Setting.create(label: 'hours_per_day', value: '7')
 n = Worker.create(name: 'Nicolas PROCUREUR', cost_hour: '45')
 cr = Worker.create(name: 'Clément ROUSSY', cost_hour: '45')
