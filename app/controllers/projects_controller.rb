@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
   end
 
   def summary
+    ########
     @activities_series = []
 
     @dates = @project.tasks.collect{ |task| task.activities.collect(&:date_activity) }.flatten.uniq
@@ -38,6 +39,15 @@ class ProjectsController < ApplicationController
     end
 
     @dates.collect!{|date| l date}
+
+
+    ########
+    total_hours = @project.tasks.collect(&:real_duration).flatten.inject(0, :+)
+    @tasks_series = []
+    @tasks_series = @project.tasks.collect do |task|
+      { name: "#{task.label} (#{task.real_duration.to_f}h)", value: task.real_duration.to_f, y: (task.real_duration/total_hours * 100).round(0).to_f }
+    end
+
   end
 
   # POST /projects

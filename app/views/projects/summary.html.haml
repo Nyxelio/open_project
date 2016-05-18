@@ -4,4 +4,7 @@
   = "#{@project.tasks.count} tâches"
 
 %div.small-10.small-centered.callout
-  %div#container.charts-activities{data: {series: @activities_series.to_json, categories: @dates}}
+  %div#container-chart-activities.charts-activities{data: {series: @activities_series.to_json, categories: @dates}}
+
+%div.small-4.small-centered.callout
+  %div#container-chart-tasks.charts-tasks{data: {series: @tasks_series.to_json }}
