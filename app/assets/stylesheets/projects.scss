@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "settings";
+
 .project-container {
   float: left;
 
@@ -25,4 +27,16 @@ a.newProject{
 .charts-activities {
   min-width: 310px;
   margin: 0 auto;
+}
+
+.counter {
+  text-align: center;
+  .value {
+    color: $primary-color;
+    font-size: 32px;
+  }
+  .name {
+    color: $primary-color;
+    font-size: 16px;
+  }
 }

@@ -1,10 +1,29 @@
 %h1.title Synthèse
 
-%div.small-4.callout
-  = "#{@project.tasks.count} tâches"
+.row
+  %div.small-4.callout.columns.counter
+    .value= "#{@project.tasks.count}"
+    .name tâches
 
-%div.small-10.small-centered.callout
-  %div#container-chart-activities.charts-activities{data: {series: @activities_series.to_json, categories: @dates}}
+  %div.small-4.callout.columns.counter
+    .value= "#{@project.tasks.collect{|task| task.activities.collect(&:worker)}.flatten.uniq.count}"
+    .name collaborateurs
 
-%div.small-4.small-centered.callout
-  %div#container-chart-tasks.charts-tasks{data: {series: @tasks_series.to_json }}
+  %div.small-4.callout.columns.counter
+    .value= "#{@project.real_duration}"
+    .name heures passées
+
+.row
+  %div.small-12.small-centered.callout
+    %div#container-duration-tasks.duration-tasks{data: {series: @duration_tasks_series.to_json, categories: @tasks_list}}
+
+.row
+  %div.small-12.small-centered.callout
+    %div#container-chart-activities.charts-activities{data: {series: @activities_series.to_json, categories: @dates}}
+
+.row
+  %div.small-6.callout.columns
+    %div#container-chart-tasks.charts-tasks{data: {series: @tasks_series.to_json }}
+
+  %div.small-6.callout.columns
+    %div#container-family-tasks.families-tasks{data: {series: @families_series.to_json }}
