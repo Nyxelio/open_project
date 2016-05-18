@@ -30,6 +30,7 @@
     color: #0079b9;
     font-weight: bold;
     padding: 20px;
+    position: relative;
   }
 }
 
@@ -167,4 +168,20 @@ tbody {
 .fn-gantt .row.header {
   width: 100%;
   max-width: 100%;
+}
+
+.toolbar {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+}
+
+.filtering-target {
+  height: 0;
+  visibility: hidden;
+  &.visible {
+    visibility: visible;
+    height: 280px;
+    transition: all 0.5s ease;
+  }
 }
