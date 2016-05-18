@@ -229,6 +229,7 @@ fr-FR:
     back: "Retour"
     show: "Détail"
     confirm: "Êtes vous sûr ?"
+    filter: "Filtrer"
 
     # Project
     list_projects: "Liste des projets"

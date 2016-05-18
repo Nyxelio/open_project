@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :activities do
       collection do
         get :search
+        get :filter
       end
     end
     resources :tasks do

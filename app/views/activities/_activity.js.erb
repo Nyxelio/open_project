@@ -1,1 +1,12 @@
-$("#activities").append("<%= escape_javascript(render(partial: 'activity_row', locals: {activity: @activity}))%>");
+var table = $("#activities");
+
+<% if is_filted  %>
+ table.empty();
+<% end %>
+
+<% unless activities.nil?
+  activities.each do |activity| %>
+    table.append("<%= escape_javascript(render(partial: 'activity_row', locals: {activity: activity}))%>");
+  <% end %>
+<% end %>
+
