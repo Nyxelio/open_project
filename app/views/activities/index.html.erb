@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t(:summary_activities, scope: 'actions') %> </h1>
+<h1 class="title"><%= t(:summary_activities, scope: 'actions') %> </h1>
 
 <%= simple_form_for([@project, @activity], url: project_activities_path, remote: :true, class: 'activity_form') do |f| %>
     <% if @activity.errors.any? %>

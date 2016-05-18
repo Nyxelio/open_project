@@ -1,6 +1,8 @@
-<h1><%=	t(:edit_activity, scope: 'actions') %></h1>
+<h1 class="title"><%=	t(:edit_activity, scope: 'actions') %></h1>
 
-<%= render 'form', action: t(:edit, scope: 'actions') %>
+<%= simple_form_for([@project, @activity], url: edit_project_activity_path(@project, @activity)) do |f| %>
+  <%= render partial: 'form', locals: {f: f, action: t(:edit, scope: 'actions')} %>
+<% end %>
 
-<%= link_to t(:show, scope: 'actions'), @activity, class: 'button' %>
-<%= link_to t(:back, scope: 'actions'), activities_path, class: 'secondary button' %>
+<%= link_to t(:show, scope: 'actions'), project_activity_path(@project, @activity), class: 'button' %>
+<%= link_to t(:back, scope: 'actions'), project_activities_path(@project), class: 'secondary button' %>

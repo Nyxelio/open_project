@@ -25,5 +25,5 @@
   <%= @activity.date_activity %>
 </p>
 
-<%= link_to t(:edit, scope: 'actions'), edit_activity_path(@activity), class: 'button' %>
-<%= link_to t(:back, scope: 'actions'), activities_path, class: 'secondary button' %>
+<%= link_to t(:edit, scope: 'actions'), edit_project_activity_path(@project, @activity), class: 'button' %>
+<%= link_to t(:back, scope: 'actions'), project_activities_path(@project), class: 'secondary button' %>

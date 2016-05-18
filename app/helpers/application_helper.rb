@@ -9,8 +9,7 @@ module ApplicationHelper
   end
 
   def date(date)
-    # d,m,y = date.strftime("%d %b %y").split(' ')
-    # date.strftime("%d %b %y")
+    return if date.nil?
     I18n.l date
   end
 end

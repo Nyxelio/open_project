@@ -28,13 +28,13 @@
           <%- if task.exceeded_day? %>
               <i class="fi-alert"/>
           <%- end %>
-          <%= task.estimated_end_at %></td>
-        <td><%= task.real_start_at %></td>
+          <%= date task.estimated_end_at %></td>
+        <td><%= date task.real_start_at %></td>
         <td class="<%= task.exceeded_end_date? ? 'alert' : ''%>">
           <%- if task.exceeded_end_date? %>
             <i class="fi-alert"/>
           <%- end %>
-          <%= task.real_end_at %>
+          <%= date task.real_end_at %>
         </td>
         <td><%= task.estimated_duration %></td>
         <td class="<%= task.exceeded? ? 'warning': ''%>">
