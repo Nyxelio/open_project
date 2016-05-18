@@ -1,3 +1,3 @@
 class Family < ActiveRecord::Base
-  has_many :task
+  has_many :tasks
 end

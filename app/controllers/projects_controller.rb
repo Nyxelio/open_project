@@ -28,14 +28,12 @@ class ProjectsController < ApplicationController
 
     @dates = @project.tasks.collect{ |task| task.activities.collect(&:date_activity) }.flatten.uniq
 
-    tasks = @project.tasks
-    tasks.each do |task|
+    @activities_series = @project.tasks.collect do |task|
       data_task = { name: task.label, data: [] }
-      @dates.each do |date|
-        sum = Activity.where(task: task, date_activity: date).sum(:num_hours).to_f || 0
-        data_task[:data] << sum
+      data_task[:data] = @dates.collect do |date|
+        Activity.where(task: task, date_activity: date).sum(:num_hours).to_f || 0
       end
-      @activities_series << data_task
+      data_task
     end
 
     @dates.collect!{|date| l date}
@@ -45,8 +43,27 @@ class ProjectsController < ApplicationController
     total_hours = @project.tasks.collect(&:real_duration).flatten.inject(0, :+)
     @tasks_series = []
     @tasks_series = @project.tasks.collect do |task|
-      { name: "#{task.label} (#{task.real_duration.to_f}h)", value: task.real_duration.to_f, y: (task.real_duration/total_hours * 100).round(0).to_f }
+      { name: task.label, value: task.real_duration.to_f, y: (task.real_duration/total_hours * 100).round(0).to_f }
     end
+
+
+    ########
+    @families_series = []
+
+    total_hours = @project.tasks.collect(&:real_duration).flatten.inject(0, :+)
+
+    families = @project.tasks.collect(&:family).flatten.uniq
+    @families_series = families.collect do |family|
+      value = Task.where(family: family).sum(:real_duration).to_f
+      { name: family.label, value: value, y: (value/total_hours * 100).round(0).to_f }
+    end
+
+    #######
+    @tasks_list = @project.tasks.collect(&:label)
+
+    @duration_tasks_series = []
+    @duration_tasks_series << {name: 'Temps estimé', data: @project.tasks.collect(&:estimated_duration).collect(&:to_f).flatten}
+    @duration_tasks_series << {name: 'Temps réel', data: @project.tasks.collect(&:real_duration).collect(&:to_f).flatten}
 
   end
 
