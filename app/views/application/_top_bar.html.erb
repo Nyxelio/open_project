@@ -16,15 +16,21 @@
         <%=link_to t(:activities, scope: 'actions'), project_activities_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
       <li>
-        <%=link_to t(:provisional_schedule, scope: 'actions'), provisional_schedule_project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
+        <%=link_to t(:planning, scope: 'actions'), provisional_schedule_project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
       <li>
         <%=link_to t(:workers, scope: 'actions'), workers_path %>
+      </li>
+      <li>
+        <%=link_to t(:summary, scope: 'actions'), summary_project_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
+      <%- unless current_user.nil? %>
+        <li><%= link_to current_user.email %></li>
+      <%- end %>
       <li><%= link_to ' '+ t(:settings, scope: 'actions'), settings_path, class: "fi-wrench" %></li>
     </ul>
   </div>

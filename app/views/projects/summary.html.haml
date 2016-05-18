@@ -1,0 +1,7 @@
+%h1.title Synthèse
+
+%div.small-4.callout
+  = "#{@project.tasks.count} tâches"
+
+%div.small-10.small-centered.callout
+  %div#container.charts-activities{data: {series: @activities_series.to_json, categories: @dates}}

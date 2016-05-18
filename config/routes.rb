@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :workers
   resources :tasks
   resources :projects do
+    member do
+      get :summary
+    end
     resources :activities do
       collection do
         get :search

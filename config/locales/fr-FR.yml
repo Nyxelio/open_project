@@ -248,6 +248,7 @@ fr-FR:
     ratio: "Ratio"
     remaining: "Restant"
     family_id: "Catégorie"
+    summary_tasks: "Récapitulatif des tâches"
 
     # activities
     summary_activities: "Récapitulatif des activités"
@@ -287,3 +288,4 @@ fr-FR:
     workers: "Collaborateurs"
     settings: "Paramètres"
     provisional_schedule: "Planning prévisionnel"
+    planning: "Planning"

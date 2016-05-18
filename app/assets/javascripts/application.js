@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require cocoon
 //= require jquery.fn.gantt
+//= require highcharts
+//= require highcharts/highcharts-more
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
