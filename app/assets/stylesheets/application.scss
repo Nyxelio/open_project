@@ -50,6 +50,17 @@
   line-height: 20px;
 }
 
+.top-bar-right.project {
+  margin-right: 30px;
+}
+
+.top-bar-right.project-name {
+  line-height: 46px;
+  color: $warning-color;
+  margin-right: 10px;
+}
+
+
 .menu-text {
   color: #26475E;
   font-size: 22px;

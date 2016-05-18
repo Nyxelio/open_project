@@ -3,9 +3,6 @@
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Open Project</li>
       <li>
-        <%=link_to t(:projects, scope: 'actions'), projects_path %>
-      </li>
-      <li>
         <%=link_to t(:categories, scope: 'actions'), families_path %>
       </li>
       <li>
@@ -35,4 +32,12 @@
       <%- end %>
     </ul>
   </div>
+  <div class="top-bar-right project">
+    <%= link_to "Changer de projet", projects_path, class: "button warning" %>
+  </div>
+  <div class="top-bar-right project-name">
+    <%- unless @project.nil? or @project.new_record? %>
+        <span><%= @project.name %></span>
+    <%- end %>
+   </div>
 </div>
