@@ -3,9 +3,6 @@
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Open Project</li>
       <li>
-        <%=link_to t(:categories, scope: 'actions'), families_path %>
-      </li>
-      <li>
         <%=link_to t(:tasks, scope: 'actions'), project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
 
@@ -15,16 +12,14 @@
       <li>
         <%=link_to t(:planning, scope: 'actions'), provisional_schedule_project_tasks_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
-      <li>
-        <%=link_to t(:workers, scope: 'actions'), workers_path %>
-      </li>
+
       <li>
         <%=link_to t(:summary, scope: 'actions'), summary_project_path(@project) unless @project.nil? or @project.new_record? %>
       </li>
       <li><%= link_to '', settings_path, class: "fi-wrench" %></li>
     </ul>
   </div>
-  <div class="top-bar-right">
+  <div class="top-bar-right user">
     <ul class="menu">
       <%- unless current_user.nil? %>
         <li><i class="fi-torso"></i> <%= current_user.email %></li>
@@ -40,4 +35,15 @@
         <span><%= @project.name %></span>
     <%- end %>
    </div>
+
+  <div class="top-bar-right menu2">
+    <ul class="menu">
+      <li>
+        <%=link_to t(:categories, scope: 'actions'), families_path %>
+      </li>
+      <li>
+        <%=link_to t(:workers, scope: 'actions'), workers_path %>
+      </li>
+      </ul>
+  </div>
 </div>

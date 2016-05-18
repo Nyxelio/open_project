@@ -45,9 +45,13 @@
   color: $white;
 }
 
-.top-bar-right ul li a {
+.top-bar-right.user ul li {
   color: #26475E;
   line-height: 20px;
+  & > a {
+    color: #26475E;
+    line-height: 20px;
+  }
 }
 
 .top-bar-right.project {
@@ -58,6 +62,18 @@
   line-height: 46px;
   color: $warning-color;
   margin-right: 10px;
+}
+
+.top-bar-right.menu2 {
+
+  margin-right: 10px;
+
+  & > ul li {
+    & > a {
+      line-height: 22px;
+      color: $white;
+    }
+  }
 }
 
 
