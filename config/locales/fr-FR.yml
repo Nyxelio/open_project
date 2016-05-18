@@ -209,12 +209,12 @@ fr-FR:
     # Common
     name: "Nom"
     label: "Libellé"
-    estimated_start_at: "Date de début estimé"
-    estimated_end_at: "Date de fin estimé"
-    estimated_duration: "Durée estimé"
-    real_start_at: "Date de début réel"
-    real_end_at: "Date de fin réel"
-    real_duration: "Durée réel"
+    estimated_start_at: "Date de début estimée"
+    estimated_end_at: "Date de fin estimée"
+    estimated_duration: "Durée estimée"
+    real_start_at: "Date de début réelle"
+    real_end_at: "Date de fin réelle"
+    real_duration: "Durée réelle"
 
     # Action
     create: "Créer"
