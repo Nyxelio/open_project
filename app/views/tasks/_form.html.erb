@@ -1,8 +1,6 @@
 <%= simple_form_for [@project, @task] do |f| %>
   <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error", scope: 'actions') %> prohibited this task from being saved:</h2>
-
+    <div id="" class="alert callout">
       <ul>
       <% @task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,14 +11,27 @@
 
   <%= f.input :code, label: t(:code, scope: 'actions') %>
   <%= f.input :label, label: t(:label, scope: 'actions') %>
-  <%= f.input :family_id, label: t(:family_id), as: :select, label_method: :label, collection: Family.all %>
-  <%= f.input :estimated_start_at, label: t(:estimated_start_at), as: :string, input_html: {type: 'date'} %>
-  <%= f.input :estimated_end_at,label: t(:estimated_end_at), as: :string, input_html: {type: 'date'} %>
-  <%= f.input :estimated_duration, label: t(:estimated_duration, scope: 'actions') %>
-  <%= f.input :real_start_at, label: t(:real_start_at), as: :string, input_html: {type: 'date'} %>
-  <%= f.input :real_end_at, label: t(:real_end_at), as: :string, input_html: {type: 'date'} %>
-  <%= f.input :real_duration, label: t(:real_duration, scope: 'actions') %>
-  <%= f.input :percent_progress, label: t(:percent_progress, scope: 'actions') %>
-  <%= f.input :ratio, label: t(:ratio, scope: 'actions') %>
-  <%= f.button :submit, value: action, class: 'success button' %>
+   <%= f.association :family, label_method: :label, value_method: :id %>
+  <%= f.input :estimated_start_at, label: t(:estimated_start_at, scope: 'actions'), as: :string, input_html: {type: 'date'} %>
+  <%= f.input :estimated_end_at,label: t(:estimated_end_at, scope: 'actions'), as: :string, input_html: {type: 'date'} %>
+  <%= f.input :estimated_duration, label: t(:estimated_duration, scope: 'actions'), input_html: {min: 0} %>
+
+    <div class="row">
+
+      <div class="small-11 columns">
+      <label><%= t(:percent_progress, scope: 'actions')%></label>
+      <div class="slider" data-slider data-initial-start="<%= f.object.percent_progress.to_f || 0 %>" data-step="1">
+        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderProgress"></span>
+        <span class="slider-fill" data-slider-fill></span>
+      </div>
+    </div>
+    <div class="small-1 columns slider-progress-number">
+      <input type="number" id="sliderProgress" name="task[percent_progress]" value="<%= f.object.percent_progress.to_f || 0 %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.button :submit, value: action, class: 'success button' %>
+    </div>
+  </div>
 <% end %>

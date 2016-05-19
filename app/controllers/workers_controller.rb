@@ -28,7 +28,7 @@ class WorkersController < ApplicationController
 
     respond_to do |format|
       if @worker.save
-        format.html { redirect_to @worker, notice: 'Worker was successfully created.' }
+        format.html { redirect_to workers_path, notice: 'Worker was successfully created.' }
         format.json { render :show, status: :created, location: @worker }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class WorkersController < ApplicationController
   def update
     respond_to do |format|
       if @worker.update(worker_params)
-        format.html { redirect_to @worker, notice: 'Worker was successfully updated.' }
+        format.html { redirect_to workers_path, notice: 'Worker was successfully updated.' }
         format.json { render :show, status: :ok, location: @worker }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class WorkersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def worker_params
-      params.require(:worker).permit(:firstname, :lastname, :cost_hour)
+      params.require(:worker).permit(:firstname, :lastname, :cost_hour, :name)
     end
 end

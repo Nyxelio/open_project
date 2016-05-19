@@ -1,6 +1,7 @@
 %tr{data: {search: search_project_activities_url(@project)}}
   %td= f.input :date_activity, label: t(:date, scope: 'actions'), as: :string, input_html: {type: 'date'}
-  %td= f.input :worker_id, label: t(:worker, scope: 'actions'), as: :select, label_method: :name, collection: Worker.all
+  -#%td= f.input :worker_id, label: t(:worker, scope: 'actions'), as: :select, label_method: :name, collection: Worker.all
+  %td= f.association :worker, label_method: :name, value_method: :id
   %td= f.input :num_hours, label: t(:num_hours, scope: 'actions'), input_html: { min: 0, max: 30}
   %td= f.input :task_id, label: t(:task, scope: 'actions'), as: :select, label_method: :label, collection: Task.where(project: @project)
   %td= f.input :observation, label: t(:observation, scope: 'actions'), as: :string

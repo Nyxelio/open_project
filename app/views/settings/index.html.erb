@@ -1,22 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<h1 class="title"><%=	t(:list_setting, scope: 'actions') %></h1>
 
-<div class="row expanded">
-  <div class=" columns">
-    <h1><%=	t(:list_setting, scope: 'actions') %></h1>
+<div class="row">
+  <div class="callout small-12 small-centered">
     <%= simple_form_for :setting, :url => update_all_settings_path, html: {method: :put} do %>
-      <% @settings.each do |setting| %>
+        <% @settings.each do |setting| %>
             <%= simple_fields_for 'setting[]', setting do |setting_fields| %>
                 <%= setting_fields.input :value, label: setting.label %>
             <% end %>
-      <% end %>
-      <div class="actions">
-        <%= submit_tag(t(:edit_setting, scope: 'actions'), class: "success button") %>
-      </div>
+        <% end %>
+        <div class="actions">
+          <%= submit_tag(t(:edit_setting, scope: 'actions'), class: "success button") %>
+          <%= link_to t(:new_setting, scope: 'actions'), new_setting_path, class: "small button" %>
+
+        </div>
     <% end %>
-    <%= link_to t(:new_setting, scope: 'actions'), new_setting_path, class: "small button" %>
   </div>
 </div>
-
-<br>
 

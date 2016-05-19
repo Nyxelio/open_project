@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
 
     total_hours = @project.tasks.collect(&:real_duration).flatten.inject(0, :+)
 
-    families = @project.tasks.collect(&:family).flatten.uniq
+    families = @project.tasks.collect(&:family).flatten.compact.uniq
     @families_series = families.collect do |family|
       value = Task.where(family: family).sum(:real_duration).to_f
       { name: family.label, value: value, y: (value/total_hours * 100).round(0).to_f }
@@ -74,7 +74,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to projects_path, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }

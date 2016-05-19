@@ -1,10 +1,10 @@
-<div class="row expanded">
-  <div class=" columns">
-    <h1><%=	t(:edit_task, scope: 'actions') %></h1>
+<h1 class="title"><%=	t(:edit_task, scope: 'actions') %></h1>
 
+<div class="row">
+  <div class="callout small-12 small-centered">
     <%= render 'form', action: t(:edit, scope: 'actions') %>
 
-    <%= link_to t(:show, scope: 'actions'), project_task_path(@project, @task), class: 'button' %>
     <%= link_to t(:back, scope: 'actions'), project_tasks_path(@project), class: 'button secondary' %>
   </div>
 </div>
+

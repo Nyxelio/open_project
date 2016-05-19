@@ -1,23 +1,17 @@
 <%= simple_form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error", scope: 'actions') %> prohibited this project from being saved:</h2>
-
-      <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if @project.errors.any? %>
+        <div id="" class="alert callout">
+          <ul>
+            <% @project.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
     <%= f.input :name, label: t(:name)%>
     <%= f.input :is_close, label: t(:is_close, scope: 'actions') %>
     <%= f.input :estimated_start_at, label: t(:estimated_start_at), as: :string, input_html: {type: 'date'} %>
     <%= f.input :estimated_end_at, label: t(:estimated_end_at), as: :string, input_html: {type: 'date'} %>
     <%= f.input :estimated_duration, label: t(:estimated_duration, scope: 'actions') %>
-    <%= f.input :real_start_at, label: t(:real_start_at), as: :string, input_html: {type: 'date'} %>
-    <%= f.input :real_end_at, label: t(:real_end_at), as: :string, input_html: {type: 'date'} %>
-    <%= f.input :real_duration, label: t(:real_duration, scope: 'actions') %>
-    <%= f.input :difference_hour, label: t(:difference_hour, scope: 'actions') %>
     <%= f.button :submit, value: action , class: 'success button' %>
 <% end %>

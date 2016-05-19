@@ -25,15 +25,16 @@ class TasksController < ApplicationController
     @pgantt = []
     Task.order(estimated_start_at: :asc).find_each do |task|
       end_date = task.real_end_at.nil? ? Date.today : task.real_end_at
+      start_date = task.real_start_at.nil? ? Date.today : task.real_start_at
 
-      values = [{ from: "/Date(#{task.estimated_start_at.to_time.to_i*1E3.round(0)})/", to: "/Date(#{task.estimated_end_at.to_time.to_i*1E3.round(0)})/", label: task.label, desc: task.label, customClass: 'bg-primary' },{ from: "/Date(#{task.real_start_at.to_time.to_i*1E3.round(0)})/", to: "/Date(#{end_date.to_time.to_i*1E3.round(0)})/", label: "#{task.label} (#{task.percent_progress}%)", desc: "#{task.label} (#{task.percent_progress}%)", customClass: 'bg-warning'}]
+      values = [{ from: "/Date(#{task.estimated_start_at.to_time.to_i*1E3.round(0)})/", to: "/Date(#{task.estimated_end_at.to_time.to_i*1E3.round(0)})/", label: task.label, desc: task.label, customClass: 'bg-primary' },{ from: "/Date(#{start_date.to_time.to_i*1E3.round(0)})/", to: "/Date(#{end_date.to_time.to_i*1E3.round(0)})/", label: "#{task.label} (#{task.percent_progress}%)", desc: "#{task.label} (#{task.percent_progress}%)", customClass: 'bg-warning'}]
 
       if !task.real_end_at.nil? and !task.estimated_end_at.nil? and task.real_end_at > task.estimated_end_at
         exceed = { from: "/Date(#{task.estimated_end_at.next_day.to_time.to_i*1E3.round(0)})/", to: "/Date(#{task.real_end_at.to_time.to_i*1E3.round(0)})/", label: "#{(task.real_end_at - task.estimated_end_at).to_i}j", desc: '', customClass: 'bg-alert'  }
         values.push exceed
       end
 
-      @pgantt << { name: task.family.label, desc: task.label, values: values }
+      @pgantt << { name: task.family.nil? ? '' : task.family.label, desc: task.label, values: values }
     end
   end
 
@@ -60,7 +61,8 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to project_task_path(@project, @task), notice: 'Task was successfully updated.' }
+        p @task.errors
+        format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -88,6 +90,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:code, :label, :estimated_start_at, :estimated_end_at, :estimated_duration, :real_start_at, :real_end_at, :real_duration, :percent_progress, :ratio)
+      params.require(:task).permit(:code, :label, :estimated_start_at, :estimated_end_at, :estimated_duration, :real_start_at, :real_end_at, :real_duration, :percent_progress, :ratio, :family_id)
     end
 end
