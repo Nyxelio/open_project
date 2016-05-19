@@ -7,6 +7,7 @@ $ ->
 #  $("[name='activity[worker_id]']").on 'change', (e) ->
 #    worker_name = $(@).find("option:selected").text()
 
+$.loadActivities = ->
   $("[name='activity[num_hours]']").on 'input', () ->
     $(".inline.alert").removeClass "alert"
     hours = $(@).val()
@@ -34,3 +35,7 @@ $ ->
 
   $('.filtering').on 'click', () ->
     $('.filtering-target').toggleClass('visible');
+
+
+$(document).ready $.loadActivities
+$(document).on 'page:load', $.loadActivities
