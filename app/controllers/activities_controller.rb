@@ -8,6 +8,7 @@ class ActivitiesController < ApplicationController
     @activities = Activity.joins(:task).where(tasks: {project_id: @project}).order(date_activity: :asc)
     @activity = Activity.new
     @workers = Worker.all
+    @tasks = Task.where(project_id: @project)
     @start_at_year = @project.estimated_start_at.year
     
     if @project.real_end_at.nil?
@@ -51,6 +52,10 @@ class ActivitiesController < ApplicationController
       string << "date_activity >= '#{Date.new(curr_year, activity_params[:month].to_i,1)}' and date_activity <= '#{Date.new(curr_year, activity_params[:month].to_i,Date.new(curr_year, activity_params[:month].to_i,1).end_of_month.day)}'"
     end
 
+    p activity_params[:task]
+    unless activity_params[:task].empty?
+      string << "task_id == #{activity_params[:task]}"
+    end
 
     if string.empty?
       @activities = Activity.joins(:task).where(tasks: {project_id: @project}).order(date_activity: :asc)
@@ -139,6 +144,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:num_hours, :worker_id, :task_id, :observation, :date_activity, :month, :year, :worker)
+      params.require(:activity).permit(:num_hours, :worker_id, :task_id, :observation, :date_activity, :month, :year, :worker, :task)
     end
 end
