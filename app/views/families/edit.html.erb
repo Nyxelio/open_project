@@ -1,8 +1,11 @@
-<div class=" columns">
-  <h1 class="title"><%= t(:edit_category, scope: 'actions') %></h1>
 
-  <%= render 'form', action: t(:edit, scope: 'actions') %>
+<h1 class="title"><%=	t(:edit_category, scope: 'actions') %></h1>
 
-  <%= link_to t(:show, scope: 'actions'), @family, class: 'button' %>
-  <%= link_to t(:back, scope: 'actions'), families_path, class: 'secondary button' %>
+<div class="row">
+  <div class="callout small-12 small-centered">
+    <%= render 'form', action: t(:edit, scope: 'actions') %>
+
+    <%= link_to t(:back, scope: 'actions'), families_path, class: 'button secondary' %>
+  </div>
 </div>
+

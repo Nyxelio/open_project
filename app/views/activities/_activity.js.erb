@@ -10,3 +10,6 @@ var table = $("#activities");
   <% end %>
 <% end %>
 
+$("#activities").siblings('tfoot').find("*[id^='activity_']").each(function(i,a){
+  $(a).val('');
+});

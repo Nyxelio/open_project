@@ -11,11 +11,12 @@
       <th><%= t(:is_close, scope: 'actions') %></th>
       <th><%= t(:estimated_start_at, scope: 'actions') %></th>
       <th><%= t(:estimated_end_at, scope: 'actions') %></th>
-      <th><%= t(:estimated_duration, scope: 'actions') %></th>
       <th><%= t(:real_start_at, scope: 'actions') %></th>
       <th><%= t(:real_end_at, scope: 'actions') %></th>
+      <th><%= t(:estimated_duration, scope: 'actions') %></th>
       <th><%= t(:real_duration, scope: 'actions') %></th>
-      <th><%= t(:difference_hour, scope: 'actions') %></th>
+      <th><%= t(:remaining, scope: 'actions') %></th>
+      <th><%=	t(:percent_progress, scope: 'actions') %></th>
       <th colspan="1"></th>
     </tr>
     </thead>
@@ -25,13 +26,14 @@
       <tr>
         <td><%= project.name %></td>
         <td><%= project.is_close %></td>
-        <td><%= project.estimated_start_at %></td>
-        <td><%= project.estimated_end_at %></td>
+        <td><%= date project.estimated_start_at %></td>
+        <td><%= date project.estimated_end_at %></td>
+        <td><%= date project.real_start_at %></td>
+        <td><%= date project.real_end_at %></td>
         <td><%= project.estimated_duration %></td>
-        <td><%= project.real_start_at %></td>
-        <td><%= project.real_end_at %></td>
         <td><%= project.real_duration %></td>
-        <td><%= project.difference_hour %></td>
+        <td><span class="<%= project.difference_hour > 0 ? 'lbl-success' : 'lbl-alert' %>" ><%= project.difference_hour %></span></td>
+        <td><%= progress project.percent_progress %></td>
         <td><%= link_to t(:show, scope: 'actions'), project %> <%= link_to "<i class='fi-pencil'></i>".html_safe, edit_project_path(project) %> <%= link_to "<i class='fi-x'></i>".html_safe, project, method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
       </tr>
     <% end %>

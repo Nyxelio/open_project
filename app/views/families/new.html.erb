@@ -1,7 +1,7 @@
-<div class="row expanded">
-  <div class=" columns">
-    <h1><%=	t(:new_category, scope: 'actions') %></h1>
+<h1 class="title"><%=	t(:new_category, scope: 'actions')  %></h1>
 
+<div class="row">
+  <div class="callout small-12 small-centered">
     <%= render 'form', action: t(:create, scope: 'actions') %>
 
     <%= link_to t(:back, scope: 'actions'), families_path, class: 'button secondary' %>

@@ -2,6 +2,11 @@ class Activity < ActiveRecord::Base
   belongs_to :worker
   belongs_to :task
 
+  validates :date_activity, presence: true
+  validates :num_hours, presence: true
+  validates :worker, presence: true
+  validates :task, presence: true
+
   def has_exceeded_worker?
     self.class.find_exceeded_workers(date_activity, worker.name).length > 0
   end

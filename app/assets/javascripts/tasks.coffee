@@ -13,4 +13,4 @@ $.loadGantt= ->
     months: ['jan', 'fév', 'mar', 'avr', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc']
 
 $(document).ready $.loadGantt
-$(document).on 'page:load', $.loadGantt
+$(document).on 'page:load page:change', $.loadGantt

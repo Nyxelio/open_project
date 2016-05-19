@@ -20,4 +20,12 @@
 //= require highcharts/highcharts-more
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$.loadFoundation = function(){
+    $(function(){ $(document).foundation(); });
+}
+
+$(document).ready($.loadFoundation);
+$(document).on('page:load page:change', $.loadFoundation);
+
+
+Turbolinks.enableProgressBar(true);
