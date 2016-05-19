@@ -46,8 +46,9 @@ class ActivitiesController < ApplicationController
       string << "date_activity >= '#{Date.new(activity_params[:year].to_i, 1,1)}' and date_activity <= '#{Date.new(activity_params[:year].to_i, 12,31)}'"
     end
 
-    unless activity_params[:month].empty?
-      string << "date_activity >= '#{Date.new(Date.today.year, activity_params[:month].to_i,1)}' and date_activity <= '#{Date.new(Date.today.year, activity_params[:month].to_i,31)}'"
+    unless activity_params[:month].empty? || activity_params[:month].to_i == 0
+      curr_year =  activity_params[:year].empty? ? Date.today.year: activity_params[:year].to_i
+      string << "date_activity >= '#{Date.new(curr_year, activity_params[:month].to_i,1)}' and date_activity <= '#{Date.new(curr_year, activity_params[:month].to_i,Date.new(curr_year, activity_params[:month].to_i,1).end_of_month.day)}'"
     end
 
     string = string.join(' and ')

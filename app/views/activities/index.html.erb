@@ -10,7 +10,7 @@
   <div class="small-6 small-centered filtering-target">
     <%= form_tag(filter_project_activities_path(@project), {method: :get, remote: true}) do %>
       <%= label_tag(:q, 'Mois:') %>
-      <%= select_tag 'activity[month]', options_for_select(t('date.month_names')) %>
+      <%= select_tag 'activity[month]', options_for_select(t('date.month_names').enum_for(:each_with_index).collect{ |month, index| [month, index]}) %>
       <%=	label_tag(:q, 'Année:') %>
       <%= select_tag('activity[year]', options_for_select((@start_at_year..@stop_at_year)), include_blank: true)%>
       <%= label_tag(:q, t(:worker, scope: 'actions')) %>
