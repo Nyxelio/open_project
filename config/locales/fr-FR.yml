@@ -245,11 +245,12 @@ fr-FR:
     edit_task: "Editer la tâche"
     summary: "Récapitulatif"
     code:  "Code"
-    percent_progress: "Pourcentage de progression"
+    percent_progress: "Progression"
     ratio: "Ratio"
     remaining: "Restant"
     family_id: "Catégorie"
     summary_tasks: "Récapitulatif des tâches"
+    family: "Catégorie"
 
     # activities
     summary_activities: "Récapitulatif des activités"

@@ -31,7 +31,17 @@
     </ul>
   </div>
   <div class="top-bar-right project">
-    <%= link_to "Changer de projet", projects_path, class: "button warning" %>
+    <%- if current_user -%>
+        <%- unless @project.nil? or @project.new_record? %>
+
+          <%= link_to "Changer de projet", projects_path, class: "button warning" %>
+        <%- else %>
+
+          <%= link_to "Ouvrir un projet", projects_path, class: "button warning" %>
+
+  <%- end %>
+
+  <%- end %>
   </div>
   <div class="top-bar-right project-name">
     <%- if current_user -%>

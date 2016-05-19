@@ -22,4 +22,7 @@ class Project < ActiveRecord::Base
     tasks.collect(&:exceeded?).flatten.include?(true)
   end
 
+  def difference_hour
+    @difference_hour ||= estimated_duration - (real_duration || 0)
+  end
 end

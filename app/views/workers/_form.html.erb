@@ -11,6 +11,6 @@
     </div>
   <% end %>
   <%= f.input :name, label: t(:name, scope: 'actions') %>
-  <%= f.input :cost_hour,label: t(:cost_hour, scope: 'actions') %>
+  <%= f.input :cost_hour,label: t(:cost_hour, scope: 'actions'), input_html: {min: 0} %>
   <%= f.button :submit, class: 'success button', value: action %>
 <% end %>

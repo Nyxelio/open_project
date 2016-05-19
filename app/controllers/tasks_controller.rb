@@ -10,6 +10,23 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+
+    task = Task.find(params[:id])
+
+    ########
+    total_hours = task.real_duration
+    @task_workers_series = Activity.where(task: task).group(:worker_id).sum(:num_hours)
+    @task_workers_series = @task_workers_series.collect do |k, v|
+      { name: Worker.find(k).name, value: v.to_f, y: total_hours == 0 ? 0 : (v/total_hours * 100).round(0).to_f }
+    end
+
+    ########
+
+    @task_activities_series = task.activities.order(date_activity: :asc).collect do |activity|
+      { name: l(activity.date_activity), y: activity.num_hours.to_f || 0 }
+    end
+
+
   end
 
   # GET /tasks/new
@@ -23,7 +40,7 @@ class TasksController < ApplicationController
 
   def provisional_schedule
     @pgantt = []
-    Task.order(estimated_start_at: :asc).find_each do |task|
+    Task.where(project: @project).order(estimated_start_at: :asc).find_each do |task|
       end_date = task.real_end_at.nil? ? Date.today : task.real_end_at
       start_date = task.real_start_at.nil? ? Date.today : task.real_start_at
 
@@ -47,7 +64,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to project_task_path(@project, @task), notice: 'Task was successfully created.' }
+        format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }

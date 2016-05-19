@@ -1,62 +1,119 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="title"><%=	"#{t(:task, scope: 'actions')} \"#{@task.label}\"" %></h1>
+<h1 class="title"><%= "#{t(:task, scope: 'actions')} \"#{@task.label}\" (#{@task.code})" %>
+  <%= link_to t(:edit_task, scope: 'actions'), edit_project_task_path(@project, @task), class: 'button', style: 'float:right' %>
+
+</h1>
 
 <div class="row">
-  <div class="small-12 small-centered callout">
+  <div class="small-6 callout columns">
 
-  <p>
-    <strong><%=	t(:code, scope: 'actions') %>:</strong>
-    <%= @task.code %>
-  </p>
+    <table>
+      <thead>
+      <tr>
+        <th><%= t(:estimated_start_at, scope: 'actions') %></th>
+        <th><%= t(:real_start_at, scope: 'actions') %></th>
+      </tr>
+      </thead>
 
-  <p>
-    <strong><%=	t(:label, scope: 'actions') %>:</strong>
-    <%= @task.label %>
-  </p>
+      <tbody>
+      <tr>
 
-  <p>
-    <strong><%=	t(:estimated_start_at, scope: 'actions') %>:</strong>
-    <%= @task.estimated_start_at %>
-  </p>
+        <td><%= date @task.estimated_start_at %></td>
+        <td><%= date @task.real_start_at %></td>
 
-  <p>
-    <strong><%=	t(:estimated_end_at, scope: 'actions') %>:</strong>
-    <%= @task.estimated_end_at %>
-  </p>
+      </tr>
+      </tbody>
+    </table>
 
-  <p>
-    <strong><%=	t(:estimated_duration, scope: 'actions') %>:</strong>
-    <%= @task.estimated_duration %>
-  </p>
+    <table>
+      <thead>
+      <tr>
+        <th><%= t(:estimated_end_at, scope: 'actions') %></th>
+        <th><%= t(:real_end_at, scope: 'actions') %></th>
+      </tr>
+      </thead>
 
-  <p>
-    <strong><%=	t(:real_start_at, scope: 'actions') %>:</strong>
-    <%= @task.real_start_at %>
-  </p>
+      <tbody>
+      <tr>
 
-  <p>
-    <strong><%=	t(:real_end_at, scope: 'actions') %>:</strong>
-    <%= @task.real_end_at %>
-  </p>
+        <td class="<%= @task.exceeded_day? ? 'alert' : '' %>">
+          <%- if @task.exceeded_day? %>
+              <i class="fi-alert"/>
+          <%- end %>
+          <%= date @task.estimated_end_at %></td>
+        <td class="<%= @task.exceeded_end_date? ? 'alert' : '' %>">
+          <%- if @task.exceeded_end_date? %>
+              <i class="fi-alert"/>
+          <%- end %>
+          <%= date @task.real_end_at %>
+        </td>
 
-  <p>
-    <strong><%=	t(:real_duration, scope: 'actions') %>:</strong>
-    <%= @task.real_duration %>
-  </p>
+      </tr>
+      </tbody>
+    </table>
 
-  <p>
-    <strong><%=	t(:percent_progress, scope: 'actions') %>:</strong>
-    <%= @task.percent_progress %>
-  </p>
+    <table>
+      <thead>
+      <tr>
+        <th><%= t(:estimated_duration, scope: 'actions') %></th>
+        <th><%= t(:real_duration, scope: 'actions') %></th>
+      </tr>
+      </thead>
 
-  <p>
-    <strong><%=	t(:ratio, scope: 'actions') %>:</strong>
-    <%= @task.ratio %>
-  </p>
+      <tbody>
+      <tr>
 
-  <%= link_to t(:edit_task, scope: 'actions'), edit_project_task_path(@project, @task), class: 'button' %>
-  <%= link_to t(:back, scope: 'actions'), project_tasks_path(@project), class: 'button secondary' %>
+        <td><%= @task.estimated_duration %></td>
+        <td class="<%= @task.exceeded? ? 'warning' : '' %>">
+          <%- if @task.exceeded? %>
+              <i class="fi-alert"/>
+          <%- end %>
+          <%= @task.real_duration %></td>
+
+      </tr>
+      </tbody>
+    </table>
+
+
   </div>
-
+  <div class="small-6 callout columns" style="min-height: 397px;">
+    <div class="row columns <%= @task.remaining > 0 ? 'lbl-success' : 'lbl-alert' %> stat"><%= @task.remaining %> h</div>
+    <div class="row columns ratio"><%= @task.real_duration %> / <%= @task.estimated_duration %> = <%= @task.ratio.round(2) %></div>
+    <div class="row columns progressing"><%= progress @task.percent_progress %></div>
+    </div>
 </div>
+
+<div class="row">
+  <div class="small-6 callout columns">
+    <div id="container-task-activities" data-series="<%= @task_activities_series.to_json %>">
+    </div>
+  </div>
+  <div class="small-6 callout columns">
+    <div id="container-task-workers" data-series="<%= @task_workers_series.to_json %>">
+    </div>
+  </div>
+</div>
+
+
+<table>
+  <thead>
+  <tr>
+    <th><%= t(:date, scope: 'actions') %></th>
+    <th><%= t(:worker, scope: 'actions') %></th>
+    <th><%= t(:num_hours, scope: 'actions') %></th>
+    <th><%= t(:task, scope: 'actions') %></th>
+    <th><%= t(:observation, scope: 'actions') %></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody id="activities">
+  <% @task.activities.each do |activity| %>
+      <%= render partial: 'activities/activity_row', locals: {activity: activity} %>
+  <% end %>
+  </tbody>
+  <tfoot>
+
+  </tfoot>
+</table>

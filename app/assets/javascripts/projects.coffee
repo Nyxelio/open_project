@@ -94,6 +94,7 @@ $.loadStats = ->
   $('#container-duration-tasks').highcharts
     chart: type: 'bar'
     title: text: 'Répartition du temps par tâche'
+    credits: enabled: false
     subtitle: text: ''
     xAxis:
       categories: $('#container-duration-tasks').data('categories')

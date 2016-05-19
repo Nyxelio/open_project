@@ -167,6 +167,28 @@ tbody {
   font-weight: bold;
 }
 
+.stat {
+  font-size: 48px;
+  text-align: center;
+  min-height: 200px;
+  line-height: 200px;
+}
+
+.ratio {
+  min-height: 98px;
+  line-height: 98px;
+  text-align: center;
+  font-size: 32px;
+  color: #2199e8;
+
+}
+
+.progressing {
+  min-height: 65px;
+  line-height: 65px;
+  vertical-align: bottom;
+  padding-top: 17.5px;
+}
 
 .bar {
   &.bg-primary {

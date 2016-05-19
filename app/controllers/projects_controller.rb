@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
     total_hours = @project.tasks.collect(&:real_duration).flatten.inject(0, :+)
     @tasks_series = []
     @tasks_series = @project.tasks.collect do |task|
-      { name: task.label, value: task.real_duration.to_f, y: (task.real_duration/total_hours * 100).round(0).to_f }
+      { name: task.label, value: task.real_duration.to_f, y: total_hours == 0 ? 0: (task.real_duration/total_hours * 100).round(0).to_f }
     end
 
 
@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
     families = @project.tasks.collect(&:family).flatten.compact.uniq
     @families_series = families.collect do |family|
       value = Task.where(family: family).sum(:real_duration).to_f
-      { name: family.label, value: value, y: (value/total_hours * 100).round(0).to_f }
+      { name: family.label, value: value, y: total_hours == 0 ? 0: (value/total_hours * 100).round(0).to_f }
     end
 
     #######
