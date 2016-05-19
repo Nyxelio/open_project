@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :projects do
     member do
       get :summary
+      get :export
     end
     resources :activities do
       collection do

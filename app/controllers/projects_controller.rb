@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :summary]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :summary, :export]
 
   # GET /projects
   # GET /projects.json
@@ -20,6 +20,12 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+  end
+
+  def export
+    respond_to do |format|
+      format.xlsx
+    end
   end
 
   def summary

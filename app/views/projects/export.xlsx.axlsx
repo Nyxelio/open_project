@@ -1,0 +1,21 @@
+wb = xlsx_package.workbook
+wb.styles do |s|
+  table_header =  s.add_style :bg_color => "2199e8", :fg_color => "FF", :sz => 16, :alignment => { :horizontal=> :center },:border => { :style => :thin, :color => "00" }
+
+  wb.add_worksheet(name: "Récapitulatif du projet") do |sheet|
+     sheet.add_row [ t('name', scope: :actions),  t('estimated_start_at', scope: :actions),  t('estimated_end_at', scope: :actions),  t('estimated_duration', scope: :actions),  t('real_start_at', scope: :actions),  t('real_end_at', scope: :actions),  t('real_duration', scope: :actions),  t('difference_hour', scope: :actions)], :style => table_header
+    sheet.add_row [@project.name, @project.estimated_start_at, @project.estimated_end_at, @project.estimated_duration, @project.real_start_at, @project.real_end_at, @project.real_duration, @project.difference_hour]
+  end
+  wb.add_worksheet(name: "Récapitulatif des tâches") do |sheet|
+    sheet.add_row [ t(:code, scope: :actions),t(:label, scope: :actions),t(:estimated_start_at, scope: :actions),t(:estimated_end_at, scope: :actions),t(:estimated_duration, scope: :actions),t(:real_start_at, scope: :actions),t(:real_end_at, scope: :actions),t(:real_duration, scope: :actions),t(:percent_progress, scope: :actions),t(:ratio, scope: :actions),t(:project, scope: :actions),t(:family, scope: :actions) ], :style => table_header
+    @project.tasks.each do |task|
+      sheet.add_row [task.code, task.label, task.estimated_start_at, task.estimated_end_at, task.estimated_duration, task.real_start_at, task.real_end_at, task.real_duration, task.percent_progress, task.ratio, task.project.name, task.family.label]
+    end
+  end
+  wb.add_worksheet(name: "Récapitulatif des activités") do |sheet|
+    sheet.add_row [ t(:date_activity, scope: :actions), t(:num_hours, scope: :actions), t(:worker, scope: :actions), t(:task, scope: :actions), t(:observation, scope: :actions) ], :style => table_header
+    Activity.joins(:task).where(tasks: {project_id: @project}).order(date_activity: :asc).each do |activity|
+      sheet.add_row [activity.date_activity, activity.num_hours, activity.worker.name, activity.task.label, activity.observation]
+    end
+  end
+end

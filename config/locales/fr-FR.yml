@@ -238,6 +238,8 @@ fr-FR:
     edit_project: "Editer le projet"
     is_close: "Clôturé"
     difference_hour: "Difference horaire"
+    export_project: "Exporter en tableur"
+    project: 'Projet'
 
     # task
     new_task: "Nouvelle tâche"
@@ -261,7 +263,7 @@ fr-FR:
     num_hours: "Nombre d'heures"
     task: "Tâche"
     observation: "Observation"
-
+    date_activity: "Date d'activité"
     # Worker
     list_worker: "Liste des collaborateurs"
     new_worker: "Nouveau collaborateur"

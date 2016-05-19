@@ -1,4 +1,7 @@
-%h1.title Synthèse
+%h1.title
+  Synthèse
+  =link_to t(:export_project, scope: 'actions'), export_project_path(@project, format: :xlsx), class: 'button', style: 'float:right'
+
 
 .row
   %div.small-3.callout.columns.counter

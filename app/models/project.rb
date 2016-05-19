@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   has_many :tasks
-
+  acts_as_xlsx
+  
   def real_start_at
     Task.where(project: id).collect(&:real_start_at).compact.sort.first
   end
