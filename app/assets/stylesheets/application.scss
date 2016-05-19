@@ -30,15 +30,56 @@
     color: #0079b9;
     font-weight: bold;
     padding: 20px;
+    position: relative;
   }
 }
 
 .top-bar-left ul > li:hover {
   background-color: white;
+  a {
+    color: $primary-color;
+  }
 }
 
-.menu-text {
+.top-bar-left ul li a {
   color: $white;
+}
+
+.top-bar-right.user ul li {
+  color: #26475E;
+  line-height: 20px;
+  & > a {
+    color: #26475E;
+    line-height: 20px;
+  }
+}
+
+.top-bar-right.project {
+  margin-right: 30px;
+}
+
+.top-bar-right.project-name {
+  line-height: 46px;
+  color: $warning-color;
+  margin-right: 10px;
+}
+
+.top-bar-right.menu2 {
+
+  margin-right: 10px;
+
+  & > ul li {
+    & > a {
+      line-height: 22px;
+      color: $white;
+    }
+  }
+}
+
+
+.menu-text {
+  color: #26475E;
+  font-size: 22px;
 }
 
 table {
@@ -154,4 +195,20 @@ tbody {
 .fn-gantt .row.header {
   width: 100%;
   max-width: 100%;
+}
+
+.toolbar {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+}
+
+.filtering-target {
+  height: 0;
+  visibility: hidden;
+  &.visible {
+    visibility: visible;
+    height: 280px;
+    transition: all 0.5s ease;
+  }
 }

@@ -1,21 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%- if notice %>
+    <div id="notice" class="success callout"><%= notice %></div>
+<%- end %>
 
 <h1 class="title">
   <%= t(:summary_activities, scope: 'actions') %>
-  <%= form_tag(filter_project_activities_path(@project), {method: :get, remote: true}) do %>
-    <%= label_tag(:q, 'Mois:') %>
-    <%= select_tag 'activity[month]', options_for_select(t('date.month_names')) %>
-    <%=	label_tag(:q, 'Année:') %>
-    <%= select_tag('activity[year]', options_for_select((@start_at_year..@stop_at_year)), include_blank: true)%>
-    <%= label_tag(:q, t(:worker, scope: 'actions')) %>
-    <%= select_tag 'activity[worker]', options_from_collection_for_select(@workers, 'id', 'name'), include_blank: true%>
-    <%= submit_tag(t(:filter, scope: 'actions')) %>
-  <% end %>
+  <div class="toolbar">
+    <button class="button hollow filtering"><i class="fi-filter"></i></button>
+  </div>
+  <div class="small-6 small-centered filtering-target">
+    <%= form_tag(filter_project_activities_path(@project), {method: :get, remote: true}) do %>
+      <%= label_tag(:q, 'Mois:') %>
+      <%= select_tag 'activity[month]', options_for_select(t('date.month_names')) %>
+      <%=	label_tag(:q, 'Année:') %>
+      <%= select_tag('activity[year]', options_for_select((@start_at_year..@stop_at_year)), include_blank: true)%>
+      <%= label_tag(:q, t(:worker, scope: 'actions')) %>
+      <%= select_tag 'activity[worker]', options_from_collection_for_select(@workers, 'id', 'name'), include_blank: true%>
+      <%= submit_tag(t(:filter, scope: 'actions')) %>
+    <% end %>
+  </div>
 </h1>
-<%- if notice %>
-  <div id="notice" class="success callout"><%= notice %></div>
-<%- end %>
-<h1 class="title"><%= t(:summary_activities, scope: 'actions') %> </h1>
 
 <%= simple_form_for([@project, @activity], url: project_activities_path, remote: :true, class: 'activity_form') do |f| %>
     <% if @activity.errors.any? %>
@@ -52,8 +55,6 @@
 </table>
 
 <br>
-
-<!--<= link_to 'Nouvelle activité', new_project_activity_path, class:'addActivity' %> -->
 
 <% end %>
 

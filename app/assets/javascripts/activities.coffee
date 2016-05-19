@@ -31,3 +31,6 @@ $ ->
     $.getJSON $(@).closest("[data-search]").data('search'), task_id: task_id, input: hours, (data) ->
       data.forEach (d) ->
         $("#activities").find("[data-id='#{d}']").addClass('inline warning')
+
+  $('.filtering').on 'click', () ->
+    $('.filtering-target').toggleClass('visible');
