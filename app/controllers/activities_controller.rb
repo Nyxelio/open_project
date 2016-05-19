@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.joins(:task).where(tasks: {project_id: @project})
+    @activities = Activity.joins(:task).where(tasks: {project_id: @project}).order(date_activity: :asc)
     @activity = Activity.new
     @workers = Worker.all
     @start_at_year = @project.estimated_start_at.year
@@ -51,12 +51,13 @@ class ActivitiesController < ApplicationController
       string << "date_activity >= '#{Date.new(curr_year, activity_params[:month].to_i,1)}' and date_activity <= '#{Date.new(curr_year, activity_params[:month].to_i,Date.new(curr_year, activity_params[:month].to_i,1).end_of_month.day)}'"
     end
 
-    string = string.join(' and ')
 
     if string.empty?
-      @activities = Activity.joins(:task).where(tasks: {project_id: @project})
+      @activities = Activity.joins(:task).where(tasks: {project_id: @project}).order(date_activity: :asc)
     else
-      @activities = Activity.where(string)
+      string << "project_id == #{@project.id}"
+      string = string.join(' and ')
+      @activities = Activity.joins(:task).where(string).order(date_activity: :asc)
     end
 
     respond_to do |format|
