@@ -7,8 +7,8 @@
   <table>
     <thead>
     <tr>
+      <th colspan="1"></th>
       <th><%= t(:name, scope: 'actions') %></th>
-      <th><%= t(:is_close, scope: 'actions') %></th>
       <th><%= t(:estimated_start_at, scope: 'actions') %></th>
       <th><%= t(:estimated_end_at, scope: 'actions') %></th>
       <th><%= t(:real_start_at, scope: 'actions') %></th>
@@ -24,8 +24,8 @@
     <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.name %></td>
-        <td><%= project.is_close %></td>
+        <td><i class="<%= project.is_close ? 'fi-lock' : 'fi-unlock' %>"></i></td>
+        <td><%= link_to project.name, project_path(project)%></td>
         <td><%= date project.estimated_start_at %></td>
         <td><%= date project.estimated_end_at %></td>
         <td><%= date project.real_start_at %></td>
@@ -34,7 +34,7 @@
         <td><%= project.real_duration %></td>
         <td><span class="<%= project.difference_hour > 0 ? 'lbl-success' : 'lbl-alert' %>" ><%= project.difference_hour %></span></td>
         <td><%= progress project.percent_progress %></td>
-        <td><%= link_to t(:show, scope: 'actions'), project %> <%= link_to "<i class='fi-pencil'></i>".html_safe, edit_project_path(project) %> <%= link_to "<i class='fi-x'></i>".html_safe, project, method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
+        <td><%= link_to "<i class='fi-pencil'></i>".html_safe, edit_project_path(project) %> <%= link_to "<i class='fi-x'></i>".html_safe, project, method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
       </tr>
     <% end %>
     </tbody>
@@ -44,14 +44,3 @@
 <div class="actions">
   <%= link_to t(:new_project, scope: 'actions'), new_project_path, class: "button newProject" %>
 </div>
-
-<div class="row small-8 small-centered large-centered">
-  <% @projects.each do |project| %>
-      <div class="columns project-container">
-        <div class="callout">
-          <h5><%= link_to project.name, project_path(project)%></h5>
-        </div>
-      </div>
-  <% end %>
-</div>
-

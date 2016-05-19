@@ -17,7 +17,7 @@
       <tr>
         <td><%= worker.name %></td>
         <td><%= worker.cost_hour %></td>
-        <td><%= link_to t(:show, scope: 'actions'), worker, class: "show" %> <%= link_to "<i class='fi-pencil'></i>".html_safe, edit_worker_path(worker) %> <%= link_to "<i class='fi-x'></i>".html_safe, worker, method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
+        <td><%= link_to "<i class='fi-pencil'></i>".html_safe, edit_worker_path(worker) %> <%= link_to "<i class='fi-x'></i>".html_safe, worker, method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
       </tr>
     <% end %>
     </tbody>

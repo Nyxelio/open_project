@@ -1,17 +1,21 @@
 %h1.title Synthèse
 
 .row
-  %div.small-4.callout.columns.counter
+  %div.small-3.callout.columns.counter
     .value= "#{@project.tasks.count}"
     .name tâches
 
-  %div.small-4.callout.columns.counter
+  %div.small-3.callout.columns.counter
     .value= "#{@project.tasks.collect{|task| task.activities.collect(&:worker)}.flatten.uniq.count}"
     .name collaborateurs
 
-  %div.small-4.callout.columns.counter
+  %div.small-3.callout.columns.counter
     .value= "#{@project.real_duration}"
     .name heures passées
+
+  %div.small-3.callout.columns.counter
+    .value= @project.exceeded? ? "<i class='fi-x x-indicator'></i>".html_safe : "<i class='fi-check check-indicator'></i>".html_safe
+    .name= @project.exceeded? ? 'délais dépassés' : 'Tout va bien'
 
 .row
   %div.small-12.small-centered.callout

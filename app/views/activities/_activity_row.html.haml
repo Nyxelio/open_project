@@ -10,4 +10,4 @@
       %i.fi-alert
     = link_to activity.task.label, project_task_path(@project, activity.task) unless activity.task.nil?
   %td= activity.observation
-  %td= [link_to(t(:show, scope: 'actions'), project_activity_path(@project, activity)), link_to("<i class='fi-pencil'></i>".html_safe, edit_project_activity_path(@project, activity)), link_to("<i class='fi-x'></i>".html_safe, project_activity_path(@project, activity), method: :delete, data: { confirm: t(:confirm, scope: 'actions') })].join(' | ').html_safe
+  %td= [link_to("<i class='fi-pencil'></i>".html_safe, edit_project_activity_path(@project, activity)), link_to("<i class='fi-x'></i>".html_safe, project_activity_path(@project, activity), method: :delete, data: { confirm: t(:confirm, scope: 'actions') })].join(' ').html_safe

@@ -15,7 +15,7 @@
     <% @families.each do |family| %>
       <tr>
         <td><%= family.label %></td>
-        <td><%= link_to t(:show, scope: 'actions'), family %> <%= link_to "<i class='fi-pencil'></i>".html_safe, edit_family_path(family) %> <%= link_to "<i class='fi-x'></i>".html_safe, family, method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
+        <td><%= link_to "<i class='fi-pencil'></i>".html_safe, edit_family_path(family) %> <%= link_to "<i class='fi-x'></i>".html_safe, family, method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
       </tr>
     <% end %>
     </tbody>

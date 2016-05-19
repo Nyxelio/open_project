@@ -22,7 +22,7 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><span class="code"><%= task.code %></span>
-        <span class="code-label"><%= task.label %></span></td>
+        <span class="code-label"><%= link_to task.label, project_task_path(@project, task) unless task.nil? %></span></td>
         <td><%= date task.estimated_start_at %></td>
         <td class="<%= task.exceeded_day? ? 'alert' : ''%>">
           <%- if task.exceeded_day? %>

@@ -18,4 +18,8 @@ class Project < ActiveRecord::Base
     count > 0 ? ((tasks.sum(:percent_progress).to_f || 0 ) / count).round(1) : 0
   end
 
+  def exceeded?(options = {})
+    tasks.collect(&:exceeded?).flatten.include?(true)
+  end
+
 end

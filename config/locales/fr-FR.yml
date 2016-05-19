@@ -236,7 +236,7 @@ fr-FR:
     new_project: "Nouveau projet"
     create_project: "Créer le projet"
     edit_project: "Editer le projet"
-    is_close: "Cloturé"
+    is_close: "Clôturé"
     difference_hour: "Difference horaire"
 
     # task

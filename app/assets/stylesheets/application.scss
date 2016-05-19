@@ -82,9 +82,10 @@ html.turbolinks-progress-bar::before {
 }
 
 
-.menu-text {
-  color: #26475E;
+li.menu-text a {
+  color: #26475E !important;
   font-size: 22px;
+  padding: 0;
 }
 
 table {
@@ -216,4 +217,12 @@ tbody {
     height: 280px;
     transition: all 0.5s ease;
   }
+}
+
+.check-indicator {
+  color: $success-color !important;
+}
+
+.x-indicator {
+  color: $alert-color !important;
 }
