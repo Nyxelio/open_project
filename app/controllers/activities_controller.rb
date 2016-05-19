@@ -51,12 +51,13 @@ class ActivitiesController < ApplicationController
       string << "date_activity >= '#{Date.new(curr_year, activity_params[:month].to_i,1)}' and date_activity <= '#{Date.new(curr_year, activity_params[:month].to_i,Date.new(curr_year, activity_params[:month].to_i,1).end_of_month.day)}'"
     end
 
-    string = string.join(' and ')
 
     if string.empty?
       @activities = Activity.joins(:task).where(tasks: {project_id: @project}).order(date_activity: :asc)
     else
-      @activities = Activity.where(string).order(date_activity: :asc)
+      string << "project_id == #{@project.id}"
+      string = string.join(' and ')
+      @activities = Activity.joins(:task).where(string).order(date_activity: :asc)
     end
 
     respond_to do |format|
