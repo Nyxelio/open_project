@@ -6,7 +6,7 @@
     <%= label_tag(:q, 'Mois:') %>
     <%= select_tag 'activity[month]', options_for_select(t('date.month_names')) %>
     <%=	label_tag(:q, 'Année:') %>
-    <%= text_field_tag('activity[year]') %>
+    <%= select_tag('activity[year]', options_for_select((@start_at_year..@stop_at_year)), include_blank: true)%>
     <%= label_tag(:q, t(:worker, scope: 'actions')) %>
     <%= select_tag 'activity[worker]', options_from_collection_for_select(@workers, 'id', 'name'), include_blank: true%>
     <%= submit_tag(t(:filter, scope: 'actions')) %>

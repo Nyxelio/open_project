@@ -8,6 +8,13 @@ class ActivitiesController < ApplicationController
     @activities = Activity.joins(:task).where(tasks: {project_id: @project})
     @activity = Activity.new
     @workers = Worker.all
+    @start_at_year = @project.estimated_start_at.year
+    
+    if @project.real_end_at.nil?
+      @stop_at_year = @project.estimated_end_at.year
+    else
+      @stop_at_year = @project.real_end_at.year
+    end
   end
 
   def search(*args)
@@ -30,35 +37,36 @@ class ActivitiesController < ApplicationController
   end
 
   def filter
-    p activity_params
-    string = ''
+    string = []
     unless activity_params[:worker].empty?
-      string += "worker_id = #{activity_params[:worker]}"
+      string << "worker_id = #{activity_params[:worker]}"
     end
 
     unless activity_params[:year].empty?
-      string += " and date_activity >= '#{Date.new(activity_params[:year], 1,1)}' and date_activity <= '#{Date.new(activity_params[:year], 12,31)}'"
+      string << "date_activity >= '#{Date.new(activity_params[:year].to_i, 1,1)}' and date_activity <= '#{Date.new(activity_params[:year].to_i, 12,31)}'"
     end
 
     unless activity_params[:month].empty?
-      string += " and date_activity >= '#{Date.new(Date.today.year, activity_params[:month],1)}' and date_activity <= '#{Date.new(Date.today.year, activity_params[:month],31)}'"
+      string << "date_activity >= '#{Date.new(Date.today.year, activity_params[:month].to_i,1)}' and date_activity <= '#{Date.new(Date.today.year, activity_params[:month].to_i,31)}'"
     end
 
-    if  string.empty?
+    string = string.join(' and ')
+
+    if string.empty?
       @activities = Activity.joins(:task).where(tasks: {project_id: @project})
     else
       @activities = Activity.where(string)
     end
 
     respond_to do |format|
-      unless @activities.nil?
-        format.js { render partial: 'activity', locals: {activities: @activities, is_filted: true} }
-        format.html { redirect_to @activities, notice: 'Activities was successfully filted.' }
-        format.json { render :show, status: :filted, location: @activity }
-      else
+      if @activities.nil?
         format.js { render partial: 'activity', notice: @activity.errors }
         format.html { render :show }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
+      else
+        format.js { render partial: 'activity', locals: {activities: @activities, is_filted: true} }
+        format.html { redirect_to @activities, notice: 'Activities was successfully filted.' }
+        format.json { render :show, status: :filted, location: @activity }
       end
     end
   end
