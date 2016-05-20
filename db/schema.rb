@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160518124232) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
     t.decimal  "num_hours"
     t.integer  "worker_id"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20160518124232) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "activities", ["task_id"], name: "index_activities_on_task_id"
-  add_index "activities", ["worker_id"], name: "index_activities_on_worker_id"
+  add_index "activities", ["task_id"], name: "index_activities_on_task_id", using: :btree
+  add_index "activities", ["worker_id"], name: "index_activities_on_worker_id", using: :btree
 
   create_table "families", force: :cascade do |t|
     t.string   "label"
@@ -70,8 +73,8 @@ ActiveRecord::Schema.define(version: 20160518124232) do
     t.datetime "updated_at",         null: false
   end
 
-  add_index "tasks", ["family_id"], name: "index_tasks_on_family_id"
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
+  add_index "tasks", ["family_id"], name: "index_tasks_on_family_id", using: :btree
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -88,8 +91,8 @@ ActiveRecord::Schema.define(version: 20160518124232) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "workers", force: :cascade do |t|
     t.string   "name"
@@ -98,4 +101,8 @@ ActiveRecord::Schema.define(version: 20160518124232) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "activities", "tasks"
+  add_foreign_key "activities", "workers"
+  add_foreign_key "tasks", "families"
+  add_foreign_key "tasks", "projects"
 end
