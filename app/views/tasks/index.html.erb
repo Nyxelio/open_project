@@ -14,6 +14,7 @@
       <th><%=	t(:real_duration, scope: 'actions') %></th>
       <th><%=	t(:remaining, scope: 'actions') %></th>
       <th><%=	t(:percent_progress, scope: 'actions') %></th>
+      <th><%= t(:cost, scope: :actions) %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -44,6 +45,7 @@
           <%= task.real_duration %></td>
         <td><span class="<%= task.remaining > 0 ? 'lbl-success' : 'lbl-alert' %>" ><%= task.remaining %></span><span> (<%= task.ratio.round(2)%>)</span></td>
         <td><%= progress task.percent_progress %></td>
+        <td><%= task.cost %> €</td>
         <td><%= link_to "<i class='fi-pencil'></i>".html_safe, edit_project_task_path(@project, task) %> <%= link_to "<i class='fi-x'></i>".html_safe, project_task_path(@project, task), method: :delete, data: { confirm: t(:confirm, scope: 'actions') } %></td>
       </tr>
     <% end %>

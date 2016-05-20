@@ -80,6 +80,7 @@
   <div class="small-6 callout columns" style="min-height: 397px;">
     <div class="row columns <%= @task.remaining > 0 ? 'lbl-success' : 'lbl-alert' %> stat"><%= @task.remaining %> h</div>
     <div class="row columns ratio"><%= @task.real_duration %> / <%= @task.estimated_duration %> = <%= @task.ratio.round(2) %></div>
+    <div class="row columns ratio"><%= @task.cost %> €</div>
     <div class="row columns progressing"><%= progress @task.percent_progress %></div>
     </div>
 </div>

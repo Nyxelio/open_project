@@ -15,6 +15,10 @@ class Activity < ActiveRecord::Base
     task.exceeded?
   end
 
+  def cost
+    (worker.cost_hour * num_hours).round(2).to_f if worker.cost_hour and num_hours
+  end
+
   after_create :add_duration
   before_destroy :remove_duration
   around_update :update_duration

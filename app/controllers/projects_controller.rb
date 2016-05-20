@@ -71,6 +71,35 @@ class ProjectsController < ApplicationController
     @duration_tasks_series << {name: 'Temps estimé', data: @project.tasks.collect(&:estimated_duration).collect(&:to_f).flatten}
     @duration_tasks_series << {name: 'Temps réel', data: @project.tasks.collect(&:real_duration).collect(&:to_f).flatten}
 
+    #######
+
+    @cost_task_series = []
+
+    ########
+    total_cost = @project.cost
+    @cost_task_series = @project.tasks.collect do |task|
+      value = task.cost
+      { name: task.label, value: value, y: total_cost == 0 ? 0 : (value/total_cost * 100).round(0).to_f }
+    end
+
+    @cost_family_series = []
+
+
+    families = @project.tasks.collect(&:family).flatten.compact.uniq
+    @cost_family_series = families.collect do |family|
+      value = Task.where(family: family).collect(&:cost).inject(0, :+)
+      { name: family.label, value: value, y: total_cost == 0 ? 0: (value/total_cost * 100).round(0).to_f }
+    end
+
+    #######
+
+    workers = Worker.all
+
+    @cost_worker_series = workers.collect do |worker|
+      value = Activity.where(worker: worker).collect(&:cost).inject(0, :+)
+      { name: worker.name, value: value, y: total_cost == 0 ? 0 : (value/total_cost * 100).round(0).to_f }
+    end
+
   end
 
   # POST /projects

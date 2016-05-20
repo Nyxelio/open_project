@@ -120,5 +120,68 @@ $.loadStats = ->
     credits: enabled: false
     series: $('#container-duration-tasks').data('series')
 
+
+  $('#container-cost-task').highcharts
+    chart:
+      plotBackgroundColor: null
+      plotBorderWidth: null
+      plotShadow: false
+      type: 'pie'
+    credits: enabled: false
+    title: text: 'Répartition du coût par tâche'
+    tooltip: pointFormat: '{series.name}: <b>{point.value:.1f}€</b>'
+    plotOptions: pie:
+      allowPointSelect: true
+      cursor: 'pointer'
+      dataLabels: enabled: false
+      showInLegend: true
+    series: [ {
+      name: 'Coût'
+      colorByPoint: true
+      data: $('#container-cost-task').data('series')
+    } ]
+
+  $('#container-cost-family').highcharts
+    chart:
+      plotBackgroundColor: null
+      plotBorderWidth: null
+      plotShadow: false
+      type: 'pie'
+    credits: enabled: false
+    title: text: 'Répartition du coût par famille'
+    tooltip: pointFormat: '{series.name}: <b>{point.value:.1f}€</b>'
+    plotOptions: pie:
+      allowPointSelect: true
+      cursor: 'pointer'
+      dataLabels: enabled: false
+      showInLegend: true
+    series: [ {
+      name: 'Coût'
+      colorByPoint: true
+      data: $('#container-cost-family').data('series')
+    } ]
+
+
+  $('#container-cost-worker').highcharts
+    chart:
+      plotBackgroundColor: null
+      plotBorderWidth: null
+      plotShadow: false
+      type: 'pie'
+    credits: enabled: false
+    title: text: 'Répartition du coût par collaborateur'
+    tooltip: pointFormat: '{series.name}: <b>{point.value:.1f}€</b>'
+    plotOptions: pie:
+      allowPointSelect: true
+      cursor: 'pointer'
+      dataLabels: enabled: false
+      showInLegend: true
+    series: [ {
+      name: 'Coût'
+      colorByPoint: true
+      data: $('#container-cost-worker').data('series')
+    } ]
+
+
 $(document).ready $.loadStats
 $(document).on 'page:load', $.loadStats

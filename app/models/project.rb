@@ -14,6 +14,10 @@ class Project < ActiveRecord::Base
     self['real_duration'] || 0
   end
 
+  def cost
+    tasks.collect(&:cost).inject(0, :+)
+  end
+
   def percent_progress
     count = tasks.count
     count > 0 ? ((tasks.sum(:percent_progress).to_f || 0 ) / count).round(1) : 0

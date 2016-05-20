@@ -49,6 +49,10 @@ class Task < ActiveRecord::Base
     @remaining ||= estimated_duration - (real_duration || 0)
   end
 
+  def cost
+    activities.collect(&:cost).inject(0, :+)
+  end
+
   after_create :add_duration
   before_destroy :remove_duration
   around_update :update_duration

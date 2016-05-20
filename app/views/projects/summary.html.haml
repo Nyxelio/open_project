@@ -4,21 +4,25 @@
 
 
 .row
-  %div.small-3.callout.columns.counter
+  %div.small-4.callout.columns.counter
+    .value= @project.exceeded? ? "<i class='fi-x x-indicator'></i>".html_safe : "<i class='fi-check check-indicator'></i>".html_safe
+    .name= @project.exceeded? ? 'délais dépassés' : 'Tout va bien'
+
+  %div.small-2.callout.columns.counter
     .value= "#{@project.tasks.count}"
     .name tâches
 
-  %div.small-3.callout.columns.counter
+  %div.small-2.callout.columns.counter
     .value= "#{@project.tasks.collect{|task| task.activities.collect(&:worker)}.flatten.uniq.count}"
     .name collaborateurs
 
-  %div.small-3.callout.columns.counter
+  %div.small-2.callout.columns.counter
     .value= "#{@project.real_duration}"
     .name heures passées
+  %div.small-2.callout.columns.counter
+    .value= "#{@project.cost} €"
+    .name au total
 
-  %div.small-3.callout.columns.counter
-    .value= @project.exceeded? ? "<i class='fi-x x-indicator'></i>".html_safe : "<i class='fi-check check-indicator'></i>".html_safe
-    .name= @project.exceeded? ? 'délais dépassés' : 'Tout va bien'
 
 .row
   %div.small-12.small-centered.callout
@@ -34,3 +38,14 @@
 
   %div.small-6.callout.columns
     %div#container-family-tasks.families-tasks{data: {series: @families_series.to_json }}
+
+
+.row
+  %div.small-4.callout.columns
+    %div#container-cost-task.cost-task{data: {series: @cost_task_series.to_json }}
+
+  %div.small-4.callout.columns
+    %div#container-cost-family.cost-task{data: {series: @cost_family_series.to_json }}
+
+  %div.small-4.callout.columns
+    %div#container-cost-worker.cost-task{data: {series: @cost_worker_series.to_json }}
