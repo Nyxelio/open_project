@@ -10,11 +10,8 @@
                 <%= setting_fields.input :value, label: setting.label %>
             <% end %>
         <% end %>
-        <div class="actions">
-          <%= submit_tag(t(:edit_setting, scope: 'actions'), class: "success button") %>
-          <%= link_to t(:new_setting, scope: 'actions'), new_setting_path, class: "small button" %>
-
-        </div>
+        <%= submit_tag(t(:edit_setting, scope: 'actions'), class: "success button") %>
+        <%= link_to t(:new_setting, scope: 'actions'), new_setting_path, class: "button" %>
     <% end %>
   </div>
 </div>
