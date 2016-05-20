@@ -26,7 +26,7 @@
     <ul class="menu">
       <%- unless current_user.nil? %>
         <li><i class="fi-torso"></i> <%= current_user.email %></li>
-        <li><%= link_to '', destroy_user_session_url(current_user), class: "fi-power" %></li>
+        <li><%= link_to '', destroy_user_session_url(current_user), method: :delete, class: "fi-power" %></li>
       <%- end %>
     </ul>
   </div>
