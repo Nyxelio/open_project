@@ -54,15 +54,19 @@ class ActivitiesController < ApplicationController
 
     p activity_params[:task]
     unless activity_params[:task].empty?
-      string << "task_id == #{activity_params[:task]}"
+      string << "task_id = #{activity_params[:task]}"
     end
 
     if string.empty?
       @activities = Activity.joins(:task).where(tasks: {project_id: @project}).order(date_activity: :asc)
     else
-      string << "project_id == #{@project.id}"
+      string << "project_id = #{@project.id}"
       string = string.join(' and ')
       @activities = Activity.joins(:task).where(string).order(date_activity: :asc)
+    end
+
+    if params[:exceeded]
+      @activities = @activities.select{|activity| activity.has_exceeded_task? or activity.has_exceeded_worker? }
     end
 
     respond_to do |format|

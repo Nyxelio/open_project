@@ -236,7 +236,8 @@ tbody {
   visibility: hidden;
   &.visible {
     visibility: visible;
-    height: 340px;
+    height: 40px;
+    margin-top: 10px;
     transition: all 0.5s ease;
   }
 }

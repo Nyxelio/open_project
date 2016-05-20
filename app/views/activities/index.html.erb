@@ -7,17 +7,57 @@
   <div class="toolbar">
     <button class="button hollow filtering"><i class="fi-filter"></i></button>
   </div>
-  <div class="small-6 small-centered filtering-target">
+  <div class="small-12 small-centered filtering-target">
     <%= form_tag(filter_project_activities_path(@project), {method: :get, remote: true}) do %>
-      <%= label_tag(:q, 'Mois:') %>
-      <%= select_tag 'activity[month]', options_for_select(t('date.month_names').enum_for(:each_with_index).collect{ |month, index| [month, index]}) %>
-      <%=	label_tag(:q, 'Année:') %>
-      <%= select_tag('activity[year]', options_for_select((@start_at_year..@stop_at_year)), include_blank: true)%>
-      <%= label_tag(:q, t(:worker, scope: 'actions')) %>
-      <%= select_tag 'activity[worker]', options_from_collection_for_select(@workers, 'id', 'name'), include_blank: true%>
-      <%= label_tag(:q, t(:task, scope: 'actions')) %>
-      <%= select_tag 'activity[task]', options_from_collection_for_select(@tasks, 'id', 'label'), include_blank: true%>
-      <%= submit_tag(t(:filter, scope: 'actions')) %>
+        <div class="small-2 columns">
+          <div class="small-4 columns">
+            <%= label_tag(:q, 'Mois:', class: 'middle') %>
+
+          </div>
+          <div class="small-8 columns">
+
+          <%= select_tag 'activity[month]', options_for_select(t('date.month_names').enum_for(:each_with_index).collect{ |month, index| [month, index]}) %>
+            </div>
+        </div>
+        <div class="small-2 columns">
+          <div class="small-4 columns">
+
+          <%=	label_tag(:q, 'Année:', class: 'middle') %>
+            </div>
+          <div class="small-8 columns">
+
+          <%= select_tag('activity[year]', options_for_select((@start_at_year..@stop_at_year)), include_blank: true)%>
+            </div>
+      </div>
+        <div class="small-3 columns">
+          <div class="small-4 columns">
+
+          <%= label_tag(:q, t(:worker, scope: 'actions'), class: 'middle') %>
+            </div>
+          <div class="small-8 columns">
+
+          <%= select_tag 'activity[worker]', options_from_collection_for_select(@workers, 'id', 'name'), include_blank: true%>
+            </div>
+          </div>
+        <div class="small-3 columns">
+          <div class="small-4 columns">
+
+          <%= label_tag(:q, t(:task, scope: 'actions'), class: 'middle') %>
+            </div>
+          <div class="small-8 columns">
+
+          <%= select_tag 'activity[task]', options_from_collection_for_select(@tasks, 'id', 'label'), include_blank: true%>
+          </div>
+         </div>
+        <div class="small-1 columns">
+      <%= check_box_tag(:exceeded) %>
+          <%= label_tag(:q, t(:exceeded, scope: 'actions'), class: 'middle') %>
+
+        </div>
+          <div class="small-1 columns">
+
+      <%= submit_tag(t(:filter, scope: 'actions'), class:'button primary') %>
+        </div>
     <% end %>
   </div>
 </h1>
