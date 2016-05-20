@@ -1,3 +1,7 @@
 === OpenProject
 
 Simple Project Management
+
+Heroku: https://open-project-rails.herokuapp.com/
+username: demo@open-project.com
+password: azerty123
